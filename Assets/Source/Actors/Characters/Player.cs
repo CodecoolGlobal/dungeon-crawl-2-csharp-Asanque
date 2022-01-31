@@ -43,5 +43,13 @@ namespace DungeonCrawl.Actors.Characters
 
         public override int DefaultSpriteId => 24;
         public override string DefaultName => "Player";
+
+        public Direction Direction
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

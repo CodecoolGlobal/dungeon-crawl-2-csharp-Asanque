@@ -11,6 +11,30 @@ namespace DungeonCrawl.Core
     /// </summary>
     public static class MapLoader
     {
+        public static GameManager GameManager
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public static CameraController CameraController
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public static ActorManager ActorManager
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         /// <summary>
         ///     Constructs map from txt file and spawns actors at appropriate positions
         /// </summary>
