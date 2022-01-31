@@ -6,6 +6,10 @@ namespace DungeonCrawl.Actors.Characters
     {
         public override bool OnCollision(Actor anotherActor)
         {
+            if (anotherActor.GetType() == typeof(Player))
+            {
+                return false;
+            }
             return true;
         }
 
