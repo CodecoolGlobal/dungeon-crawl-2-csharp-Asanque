@@ -5,6 +5,10 @@ namespace DungeonCrawl.Actors
 {
     public abstract class Actor : MonoBehaviour
     {
+        public virtual void ApplyDamage(int damage)
+        {
+
+        }
         public (int x, int y) Position
         {
             get => _position;

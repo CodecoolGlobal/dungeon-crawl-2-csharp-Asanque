@@ -4,11 +4,6 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Skeleton : Character
     {
-        protected override void OnUpdate(float deltaTime)
-        {
-            TryAttack();
-        }
-
 
         public new int Health = 50;
         public new int Strength = 5;

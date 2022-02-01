@@ -5,13 +5,14 @@ namespace DungeonCrawl.Actors.Characters
 {
     public abstract class Character : Actor
     {
-        public int Health { get; private set; }
+        public int Health { get; set; }
         public int Strength { get; set; }
-
-        public void ApplyDamage(int damage)
+        public override void ApplyDamage(int damage)
         {
-            Debug.Log(this.Health);
+            string print = $"Took {damage} to hp:{Health}";
+            Debug.Log(print);
             Health -= damage;
+            Debug.Log(Health);
 
             if (Health <= 0)
             {
@@ -54,7 +55,7 @@ namespace DungeonCrawl.Actors.Characters
                 {
                     if (actorAtTargetPosition.AttackAble(this))
                     {
-                        Character attackableActor = (Character)actorAtTargetPosition; 
+                        var attackableActor = actorAtTargetPosition; 
                         attackableActor.ApplyDamage(this.Strength);
                         return true;
                     }
