@@ -30,10 +30,11 @@ namespace DungeonCrawl.Actors.Characters
             if (lastFrame > 1)
             {
                 int possibleDirections = 4;
-                int randomDirection = UnityEngine.Random.Range(0, possibleDirections);
+                int randomDirection = Random.Range(0, possibleDirections);
                 Direction direction = (Direction)randomDirection;
                 TryMove(direction);
                 lastFrame = 0;
+                TryAttack();
             }
             else 
             {

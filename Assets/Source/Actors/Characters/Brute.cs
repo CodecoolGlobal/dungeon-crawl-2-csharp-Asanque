@@ -4,11 +4,28 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Brute : Character
     {
+        private float lastFrame = 0f;
         public Brute()
         {
             Health = 50;
             Strength = 10;
         }
+
+        protected override void OnUpdate(float deltaTime)
+        {
+            if (lastFrame > 1)
+            {
+                Debug.Log("Im dumb brute, i attak");
+                TryAttack();
+                lastFrame = 0;
+            }
+            else
+            {
+                lastFrame += deltaTime;
+            }
+
+        }
+
         public override bool OnCollision(Actor anotherActor)
         {
             if (anotherActor.GetType() == typeof(Player))
