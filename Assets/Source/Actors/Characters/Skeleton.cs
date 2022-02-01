@@ -4,6 +4,14 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Skeleton : Character
     {
+        protected override void OnUpdate(float deltaTime)
+        {
+            TryAttack();
+        }
+
+
+        public new int Health = 50;
+        public new int Strength = 5;
         public override bool OnCollision(Actor anotherActor)
         {
             if (anotherActor.GetType() == typeof(Player))
@@ -11,6 +19,16 @@ namespace DungeonCrawl.Actors.Characters
                 return false;
             }
             return true;
+        }
+
+        public override bool AttackAble(Actor anotherActor)
+        {
+            if (anotherActor.GetType() == typeof(Player))
+            {
+                Debug.Log("Im getting attacked by a player");
+                return true;
+            }
+            return false;
         }
 
         protected override void OnDeath()
