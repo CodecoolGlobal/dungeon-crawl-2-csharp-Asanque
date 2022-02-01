@@ -1,4 +1,5 @@
 ﻿using DungeonCrawl.Core;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
@@ -6,16 +7,18 @@ namespace DungeonCrawl.Actors.Characters
     public abstract class Character : Actor
     {
         public int Health { get; set; }
+        public int Shield { get; set; }
         public int Strength { get; set; }
         public override void ApplyDamage(int damage)
         {
-            string print = $"Took {damage} to hp:{Health}";
-            Debug.Log(print);
-            Health -= damage;
-            Debug.Log(Health);
+            Health -= damage - Shield;
 
             if (Health <= 0)
             {
+                if (Shield > 0)
+                {
+                    Shield -= damage / 2;
+                }
                 // Die
                 OnDeath();
 
@@ -35,7 +38,9 @@ namespace DungeonCrawl.Actors.Characters
             switch (CheckAttack())
             {
                 case true:
-                    Debug.Log($"I {this.name} is attacking");
+                    List<Actor> enemiesNearMe = CollectEnemiesNearMe();
+                    AttackEnemiesNearMe(enemiesNearMe);
+
                     break;
                 case false:
                     break;
@@ -47,22 +52,39 @@ namespace DungeonCrawl.Actors.Characters
             {
                 (int x, int y) targetPosition = (Position.x + direction[0], Position.y + direction[1]);
                 var actorAtTargetPosition = ActorManager.Singleton.GetActorAt(targetPosition);
-                if (actorAtTargetPosition == null)
+                if (actorAtTargetPosition != null)
                 {
-                    continue;
-                }
-                else
-                {
-                    if (actorAtTargetPosition.AttackAble(this))
-                    {
-                        var attackableActor = actorAtTargetPosition; 
-                        attackableActor.ApplyDamage(this.Strength);
-                        return true;
-                    }
+                    return true;
                 }
             }
             return false;
         }
+
+        public List<Actor> CollectEnemiesNearMe()
+        {
+            List<Actor> enemies = new List<Actor>();
+            foreach (var direction in Utilities.Directions)
+            {
+                (int x, int y) targetPosition = (Position.x + direction[0], Position.y + direction[1]);
+                var actorAtTargetPosition = ActorManager.Singleton.GetActorAt(targetPosition);
+                if (actorAtTargetPosition != null)
+                {
+                    if (actorAtTargetPosition.AttackAble(this))
+                    {
+                        enemies.Add(actorAtTargetPosition);
+                    }
+                }
+            }
+            return enemies;
+        }
+
+        public void AttackEnemiesNearMe(List<Actor> enemies)
+        {
+            foreach (var enemy in enemies)
+            {
+                enemy.ApplyDamage(this.Strength);
+            }
+        }    
     }
 }
 

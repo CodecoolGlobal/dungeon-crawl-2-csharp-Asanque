@@ -4,8 +4,12 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Player : Character
     {
-        public new int Health = 100;
-        public new int Strength = 10;
+        public Player()
+        {
+            Health = 100;
+            Strength = 10;
+            Shield = 5;
+        }
         protected override void OnUpdate(float deltaTime)
         {
             if (Input.GetKeyDown(KeyCode.W))
@@ -32,7 +36,6 @@ namespace DungeonCrawl.Actors.Characters
                 TryMove(Direction.Right);
             }if (Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log(this.Health);
                 TryAttack();
             }
         }
@@ -41,7 +44,6 @@ namespace DungeonCrawl.Actors.Characters
         {
             if (anotherActor.GetType() == typeof(Skeleton))
             {
-                Debug.Log("Im getting attacked by a skeleton");
                 return true;
             }
             return false;
