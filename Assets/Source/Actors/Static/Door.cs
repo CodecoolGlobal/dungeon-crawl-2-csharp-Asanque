@@ -13,9 +13,12 @@ namespace DungeonCrawl.Actors.Static
             }
             if (!isOpen)
             {
-                if (true) // (anotherActor.HasKey())
+                Player player = (Player)anotherActor;
+                if (player.HasKey())
                 {
                     isOpen = true;
+                    player.inventory["key"] -= 1;
+                    SetSprite(487);
                     return true;
                 };
                 return false;
