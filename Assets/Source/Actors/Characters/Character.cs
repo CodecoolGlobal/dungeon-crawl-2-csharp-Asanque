@@ -13,12 +13,16 @@ namespace DungeonCrawl.Actors.Characters
         {
             Health -= damage - Shield;
 
+            if (Shield > 0)
+            {
+                Shield -= damage / 4;
+                if (Shield < 0)
+                {
+                    Shield = 0;
+                }
+            }
             if (Health <= 0)
             {
-                if (Shield > 0)
-                {
-                    Shield -= damage / 2;
-                }
                 // Die
                 OnDeath();
 
