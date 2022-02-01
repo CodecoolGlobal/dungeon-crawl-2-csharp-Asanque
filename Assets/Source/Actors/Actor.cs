@@ -51,6 +51,7 @@ namespace DungeonCrawl.Actors
             {
                 // No obstacle found, just move
                 Position = targetPosition;
+                CameraController.Singleton.Position = targetPosition;
             }
             else
             {
@@ -58,6 +59,7 @@ namespace DungeonCrawl.Actors
                 {
                     // Allowed to move
                     Position = targetPosition;
+                    CameraController.Singleton.Position = targetPosition;
                 }
             }
         }
