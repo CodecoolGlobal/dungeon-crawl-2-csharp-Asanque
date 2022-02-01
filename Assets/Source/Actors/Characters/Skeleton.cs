@@ -6,9 +6,8 @@ namespace DungeonCrawl.Actors.Characters
     {
         public Skeleton()
         {
-            Health = 50;
+            Health = 25;
             Strength = 5;
-            Shield = 0;
         }
         private float lastFrame = 0f;
 
@@ -19,15 +18,6 @@ namespace DungeonCrawl.Actors.Characters
                 return false;
             }
             return true;
-        }
-
-        public override bool AttackAble(Actor anotherActor)
-        {
-            if (anotherActor.GetType() == typeof(Player))
-            {
-                return true;
-            }
-            return false;
         }
 
         protected override void OnDeath()

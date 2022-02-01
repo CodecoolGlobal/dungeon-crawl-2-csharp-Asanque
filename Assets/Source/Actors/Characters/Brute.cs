@@ -4,6 +4,11 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Brute : Character
     {
+        public Brute()
+        {
+            Health = 50;
+            Strength = 10;
+        }
         public override bool OnCollision(Actor anotherActor)
         {
             if (anotherActor.GetType() == typeof(Player))

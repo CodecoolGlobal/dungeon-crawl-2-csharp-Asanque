@@ -42,7 +42,7 @@ namespace DungeonCrawl.Actors.Characters
 
         public override bool AttackAble(Actor anotherActor)
         {
-            if (anotherActor.GetType() == typeof(Skeleton))
+            if (Utilities.EnemyTypes.Contains(anotherActor.GetType()))
             {
                 return true;
             }

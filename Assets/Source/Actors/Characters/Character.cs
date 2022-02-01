@@ -7,7 +7,7 @@ namespace DungeonCrawl.Actors.Characters
     public abstract class Character : Actor
     {
         public int Health { get; set; }
-        public int Shield { get; set; }
+        public int Shield { get; set; } = 0;
         public int Strength { get; set; }
         public override void ApplyDamage(int damage)
         {
@@ -84,7 +84,16 @@ namespace DungeonCrawl.Actors.Characters
             {
                 enemy.ApplyDamage(this.Strength);
             }
-        }    
+        }
+
+        public override bool AttackAble(Actor anotherActor)
+        {
+            if (anotherActor.GetType() == typeof(Player))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
 
