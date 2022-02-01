@@ -13,7 +13,7 @@ namespace DungeonCrawl.Actors.Static
             }
             if (!isOpen)
             {
-                if (anotherActor.HasKey())
+                if (true) // (anotherActor.HasKey())
                 {
                     isOpen = true;
                     return true;
