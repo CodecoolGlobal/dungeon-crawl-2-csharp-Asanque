@@ -59,7 +59,6 @@ namespace DungeonCrawl.Actors
                     Position = targetPosition;
                 }
             }
-
         }
 
         public virtual bool AttackAble(Actor anotherActor)
