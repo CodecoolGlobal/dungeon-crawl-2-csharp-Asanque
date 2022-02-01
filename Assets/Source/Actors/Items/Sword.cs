@@ -10,21 +10,21 @@ using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Actors.Items
 {
-    internal class Key : Actor
+    internal class Sword : Actor
     {
-        public override int DefaultSpriteId => 559;
-        public override string DefaultName => "Key";
+        public override int DefaultSpriteId => 464;
+        public override string DefaultName => "Sword";
         public override bool OnCollision(Actor anotherActor)
         {
             if (anotherActor.GetType() == typeof(Player))
             {
-                if (anotherActor.inventory.ContainsKey("key"))
+                if (anotherActor.inventory.ContainsKey("sword"))
                 {
-                    anotherActor.inventory["key"] += 1;
+                    anotherActor.inventory["sword"] += 1;
                 }
                 else
                 {
-                    anotherActor.inventory.Add("key", 1);
+                    anotherActor.inventory.Add("sword", 1);
                 }
             }
             else

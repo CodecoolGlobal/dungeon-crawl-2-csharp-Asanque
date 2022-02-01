@@ -52,7 +52,7 @@ namespace DungeonCrawl.Actors.Characters
             }
         }
 
-        public bool hasKey()
+        public bool HasKey()
         {
             if (inventory.ContainsKey("key") && inventory["key"] > 0 )
             {
