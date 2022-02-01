@@ -18,6 +18,7 @@ namespace DungeonCrawl.Actors.Static
                 {
                     isOpen = true;
                     player.inventory["key"] -= 1;
+                    SetSprite(487);
                     return true;
                 };
                 return false;
