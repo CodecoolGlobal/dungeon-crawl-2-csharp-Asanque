@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using DungeonCrawl.Actors.Characters;
 
 namespace DungeonCrawl
 {
@@ -12,6 +14,12 @@ namespace DungeonCrawl
 
     public static class Utilities
     {
+
+        public static List<Type> EnemyTypes= new List<Type> { typeof(Brute), typeof(Skeleton)};
+        
+        public static List<int[]> Directions = new List<int[]> 
+        { new int[] { 0, 1 }, new int[] {0, -1}, new int[] {-1, 0 }, new int[] {1, 0} };
+
         public static Actors.Actor Actor
         {
             get => default;

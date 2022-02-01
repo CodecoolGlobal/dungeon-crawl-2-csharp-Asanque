@@ -4,6 +4,11 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Skeleton : Character
     {
+        public Skeleton()
+        {
+            Health = 25;
+            Strength = 5;
+        }
         private float lastFrame = 0f;
 
         public override bool OnCollision(Actor anotherActor)

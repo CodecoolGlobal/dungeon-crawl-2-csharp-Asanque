@@ -9,6 +9,10 @@ namespace DungeonCrawl.Actors
 {
     public abstract class Actor : MonoBehaviour
     {
+        public virtual void ApplyDamage(int damage)
+        {
+
+        }
         public (int x, int y) Position
         {
             get => _position;
@@ -60,6 +64,11 @@ namespace DungeonCrawl.Actors
                     Position = targetPosition;
                 }
             }
+        }
+
+        public virtual bool AttackAble(Actor anotherActor)
+        {
+            return false;
         }
 
         /// <summary>

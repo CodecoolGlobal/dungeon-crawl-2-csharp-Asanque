@@ -4,6 +4,12 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Player : Character
     {
+        public Player()
+        {
+            Health = 100;
+            Strength = 10;
+            Shield = 5;
+        }
         protected override void OnUpdate(float deltaTime)
         {
             if (Input.GetKeyDown(KeyCode.W))
@@ -28,7 +34,19 @@ namespace DungeonCrawl.Actors.Characters
             {
                 // Move right
                 TryMove(Direction.Right);
+            }if (Input.GetKeyDown(KeyCode.Space))
+            {
+                TryAttack();
             }
+        }
+
+        public override bool AttackAble(Actor anotherActor)
+        {
+            if (Utilities.EnemyTypes.Contains(anotherActor.GetType()))
+            {
+                return true;
+            }
+            return false;
         }
 
         public override bool OnCollision(Actor anotherActor)
