@@ -15,6 +15,11 @@ namespace DungeonCrawl.Core
         ///     ActorManager singleton
         /// </summary>
         public static ActorManager Singleton { get; private set; }
+        public static int RandomNumber()
+        {
+            int randNumber = Random.Range(0, 100);
+            return randNumber;
+        }
 
         private SpriteAtlas _spriteAtlas;
         private HashSet<Actor> _allActors;
