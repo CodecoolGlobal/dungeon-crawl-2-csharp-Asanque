@@ -51,5 +51,14 @@ namespace DungeonCrawl.Actors.Characters
             {
             }
         }
+
+        public bool hasKey()
+        {
+            if (inventory.ContainsKey("key") && inventory["key"] > 0 )
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DungeonCrawl.Actors.Characters;
+using DungeonCrawl.Actors.Items;
 using DungeonCrawl.Actors.Static;
 using System;
 using System.Text.RegularExpressions;
@@ -87,6 +88,10 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Door>(position);
                     break;
                 case ' ':
+                    break;
+                case 'k':
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    ActorManager.Singleton.Spawn<Key>(position);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
