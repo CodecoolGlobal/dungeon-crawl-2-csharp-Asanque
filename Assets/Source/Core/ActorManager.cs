@@ -12,10 +12,16 @@ namespace DungeonCrawl.Core
     /// </summary>
     public class ActorManager : MonoBehaviour
     {
+        private const int DefId = -5;
         /// <summary>
         ///     ActorManager singleton
         /// </summary>
         public static ActorManager Singleton { get; private set; }
+        public static int RandomNumber()
+        {
+            int randNumber = Random.Range(0, 100);
+            return randNumber;
+        }
 
         private SpriteAtlas _spriteAtlas;
         private HashSet<Actor> _allActors;
@@ -106,9 +112,9 @@ namespace DungeonCrawl.Core
         /// <param name="position">Position</param>
         /// <param name="actorName">Actor's name (optional)</param>
         /// <returns></returns>
-        public T Spawn<T>((int x, int y) position, string actorName = null) where T : Actor
+        public T Spawn<T>((int x, int y) position, int id = DefId, string actorName = null) where T : Actor
         {
-            return Spawn<T>(position.x, position.y, actorName);
+            return Spawn<T>(position.x, position.y, id, actorName);
         }
 
         /// <summary>
@@ -119,7 +125,7 @@ namespace DungeonCrawl.Core
         /// <param name="y">Y coordinate</param>
         /// <param name="actorName">Actor's name (optional)</param>
         /// <returns></returns>
-        public T Spawn<T>(int x, int y, string actorName = null) where T : Actor
+        public T Spawn<T>(int x, int y, int id, string actorName = null) where T : Actor
         {
             var go = new GameObject();
             go.AddComponent<SpriteRenderer>();
@@ -128,6 +134,7 @@ namespace DungeonCrawl.Core
 
             go.name = actorName ?? component.DefaultName;
             component.Position = (x, y);
+            component.SetSprite(id);
 
             _allActors.Add(component);
 

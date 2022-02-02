@@ -83,13 +83,6 @@
   </Class>
   <Class Name="Assets.Source.Core.UserInterface" Collapsed="true">
     <Position X="20.25" Y="0.75" Width="1.5" />
-    <NestedTypes>
-      <Enum Name="Assets.Source.Core.UserInterface.TextPosition" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Assets\Source\Core\UserInterface.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAABAAAAAAAAAAAAIAAAAAAAAAAAAEAAAAAAAAAAEA=</HashCode>
       <FileName>Assets\Source\Core\UserInterface.cs</FileName>

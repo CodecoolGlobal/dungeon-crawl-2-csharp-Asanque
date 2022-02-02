@@ -7,25 +7,22 @@ using UnityEngine;
 using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Core;
 
-
 namespace DungeonCrawl.Actors.Items
 {
-    internal class Key : Actor
+    internal class BigHealth : Actor
     {
-        public override int DefaultSpriteId => 559;
-        public override string DefaultName => "Key";
+        public override int DefaultSpriteId => 521;
+        public override string DefaultName => "BigHealth";
         public override bool OnCollision(Actor anotherActor)
         {
             if (anotherActor.GetType() == typeof(Player))
             {
-                anotherActor.inventory["key"] += 1;
+                Player player = (Player)anotherActor;
+                player.Health = 100;
+                ActorManager.Singleton.DestroyActor(this);
+                return true;
             }
-            else
-            {
-                return false;
-            }
-            ActorManager.Singleton.DestroyActor(this);
-            return true;
+            else { return false; }
         }
     }
 }

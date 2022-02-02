@@ -29,7 +29,7 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnUpdate(float deltaTime)
         {
-            if (lastFrame > 1)
+            if (lastFrame > 1.5)
             {
                 if (count == 5)
                 {

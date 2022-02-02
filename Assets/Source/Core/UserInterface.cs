@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Assets.Source.Core
@@ -49,6 +50,25 @@ namespace Assets.Source.Core
         public void SetText(string text, TextPosition textPosition)
         {
             _textComponents[(int) textPosition].text = text;
+        }
+
+        public void PrintInterface(Dictionary<string, int> inventory, int Health, int Strength, int Shield)
+        {
+            string inventoryToPrint = string.Empty;
+            string items = string.Empty;
+            foreach (var item in inventory)
+            {
+                if (item.Value > 0)
+                {
+                    items += $"{(char.ToUpper(item.Key[0])) + item.Key.Substring(1)} x{item.Value}\n";
+                }
+            }
+            if (items != string.Empty)
+            {
+                inventoryToPrint += "Inventory:\n" + items;
+            }
+            Singleton.SetText(inventoryToPrint, TextPosition.BottomRight);
+            Singleton.SetText($"HP: {Health} STR: {Strength} SHI: {Shield}", UserInterface.TextPosition.BottomLeft);
         }
     }
 }

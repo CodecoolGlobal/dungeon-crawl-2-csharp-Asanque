@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Source.Core;
 using DungeonCrawl.Core;
 using UnityEngine;
 
@@ -9,6 +10,15 @@ namespace DungeonCrawl.Actors
 {
     public abstract class Actor : MonoBehaviour
     {
+        public virtual void ApplyDamage(int damage)
+        {
+
+        }
+
+        public virtual void AddToStat(Stats stat, int toAdd)
+        {
+
+        }
         public (int x, int y) Position
         {
             get => _position;
@@ -21,7 +31,11 @@ namespace DungeonCrawl.Actors
 
         private (int x, int y) _position;
         private SpriteRenderer _spriteRenderer;
-        public Dictionary<string, int> inventory = new Dictionary<string, int>();
+        public Dictionary<string, int> inventory = new Dictionary<string, int>() { 
+            {"sword", 0 },
+            {"shield", 0 },
+            {"key", 0 }
+        };
 
         private void Awake()
         {
@@ -37,6 +51,10 @@ namespace DungeonCrawl.Actors
 
         public void SetSprite(int id)
         {
+            if (id == -5)
+            {
+                id = DefaultSpriteId;
+            }
             _spriteRenderer.sprite = ActorManager.Singleton.GetSprite(id);
         }
 
@@ -60,6 +78,16 @@ namespace DungeonCrawl.Actors
                     Position = targetPosition;
                 }
             }
+        }
+
+        public virtual bool IsPlayer()
+        {
+            return false;
+        }
+
+        public virtual bool AttackAble(Actor anotherActor)
+        {
+            return false;
         }
 
         /// <summary>

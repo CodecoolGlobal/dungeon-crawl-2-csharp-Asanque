@@ -10,15 +10,16 @@ using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Actors.Items
 {
-    internal class Key : Actor
+    internal class Shield : Actor
     {
-        public override int DefaultSpriteId => 559;
-        public override string DefaultName => "Key";
+        public override int DefaultSpriteId => 230;
+        public override string DefaultName => "Shield";
         public override bool OnCollision(Actor anotherActor)
         {
             if (anotherActor.GetType() == typeof(Player))
             {
-                anotherActor.inventory["key"] += 1;
+                anotherActor.inventory["shield"] += 1;
+                anotherActor.AddToStat(Stats.Shield, 5);
             }
             else
             {

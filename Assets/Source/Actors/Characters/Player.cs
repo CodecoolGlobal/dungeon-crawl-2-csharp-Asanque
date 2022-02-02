@@ -1,11 +1,21 @@
-﻿using UnityEngine;
+﻿using Assets.Source.Core;
+using DungeonCrawl.Core;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
 {
     public class Player : Character
     {
+        public Player()
+        {
+            Health = 100;
+            Strength = 10;
+            Shield = 5;
+        }
         protected override void OnUpdate(float deltaTime)
         {
+            UserInterface.Singleton.PrintInterface(inventory, Health, Strength, Shield);
             if (Input.GetKeyDown(KeyCode.W))
             {
                 // Move up
@@ -28,7 +38,25 @@ namespace DungeonCrawl.Actors.Characters
             {
                 // Move right
                 TryMove(Direction.Right);
+            }if (Input.GetKeyDown(KeyCode.Space))
+            {
+                TryAttack();
             }
+            CameraController.Singleton.Position = Position;
+        }
+
+        public override bool IsPlayer()
+        {
+            return true;
+        }
+
+        public override bool AttackAble(Actor anotherActor)
+        {
+            if (Utilities.EnemyTypes.Contains(anotherActor.GetType()))
+            {
+                return true;
+            }
+            return false;
         }
 
         public override bool OnCollision(Actor anotherActor)
@@ -59,6 +87,24 @@ namespace DungeonCrawl.Actors.Characters
                 return true;
             }
             return false;
+        }
+
+        public override void AddToStat(Stats stat, int toAdd)
+        {
+            switch (stat)
+            {
+                case Stats.Health:
+                    Health += toAdd;
+                    break;
+
+                case Stats.Strength:
+                    Strength += toAdd;
+                    break;
+
+                case Stats.Shield:
+                    Shield += toAdd;
+                    break;
+            }
         }
     }
 }
