@@ -1,4 +1,5 @@
-﻿using DungeonCrawl.Actors.Characters;
+﻿using Assets.Source.Actors.Characters;
+using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Actors.Items;
 using DungeonCrawl.Actors.Static;
 using System;
@@ -100,6 +101,10 @@ namespace DungeonCrawl.Core
                 case 'w':
                     ActorManager.Singleton.Spawn<Floor>(position);
                     ActorManager.Singleton.Spawn<Sword>(position);
+                    break;
+                case 'd':
+                    ActorManager.Singleton.Spawn<Floor>(position);
+                    ActorManager.Singleton.Spawn<Demon>(position);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

@@ -1,4 +1,5 @@
-﻿using DungeonCrawl.Actors.Characters;
+﻿using Assets.Source.Actors.Characters;
+using DungeonCrawl.Actors.Characters;
 
 namespace DungeonCrawl.Actors.Static
 {
@@ -6,7 +7,7 @@ namespace DungeonCrawl.Actors.Static
     {
         public override bool OnCollision(Actor anotherActor)
         {
-            if (anotherActor.GetType() == typeof(Player) || anotherActor.GetType() == typeof(Skeleton))
+            if (anotherActor.GetType() == typeof(Player) || anotherActor.GetType() == typeof(Skeleton) || anotherActor.GetType() == typeof(Demon))
             {
                 return false;
             }
@@ -14,5 +15,6 @@ namespace DungeonCrawl.Actors.Static
         }
         public override int DefaultSpriteId => 825;
         public override string DefaultName => "Wall";
+
     }
 }
