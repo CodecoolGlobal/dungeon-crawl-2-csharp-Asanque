@@ -1,5 +1,4 @@
-﻿using Assets.Source.Actors.Characters;
-using DungeonCrawl.Actors.Characters;
+﻿using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Actors.Items;
 using DungeonCrawl.Actors.Static;
 using System;

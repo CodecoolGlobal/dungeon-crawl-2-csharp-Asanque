@@ -1,5 +1,4 @@
-﻿using Assets.Source.Actors.Characters;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
 {

@@ -1,5 +1,4 @@
-﻿using Assets.Source.Actors.Characters;
-using DungeonCrawl.Actors.Characters;
+﻿using DungeonCrawl.Actors.Characters;
 
 namespace DungeonCrawl.Actors.Static
 {
@@ -7,7 +6,7 @@ namespace DungeonCrawl.Actors.Static
     {
         public override bool OnCollision(Actor anotherActor)
         {
-            if (anotherActor.GetType() == typeof(Player) || anotherActor.GetType() == typeof(Skeleton) || anotherActor.GetType() == typeof(Demon))
+            if (anotherActor.GetType() == typeof(Player) || anotherActor.GetType() == typeof(Skeleton))
             {
                 return false;
             }
