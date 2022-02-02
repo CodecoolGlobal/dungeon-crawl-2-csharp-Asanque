@@ -44,8 +44,8 @@ namespace DungeonCrawl.Core
         /// <param name="id"></param>
         public static void LoadMap(int id)
         {
-            var lines = Regex.Split(Resources.Load<TextAsset>($"map_2").text, "\r\n|\r|\n");
-            Sprites.SetSprites(2);
+            var lines = Regex.Split(Resources.Load<TextAsset>($"map_{id}").text, "\r\n|\r|\n");
+            Sprites.SetSprites(id);
 
             // Read map size from the first line
             var split = lines[0].Split(' ');
@@ -143,6 +143,7 @@ namespace DungeonCrawl.Core
                 case 'c':
                     ActorManager.Singleton.Spawn<Decoration>(position, Sprites.campfireId);
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
+                    break;
                 case '+':
                     ActorManager.Singleton.Spawn<SmallHealth>(position);
                     break;
