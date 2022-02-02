@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Source.Core;
 using DungeonCrawl.Core;
 using UnityEngine;
 
@@ -10,6 +11,11 @@ namespace DungeonCrawl.Actors
     public abstract class Actor : MonoBehaviour
     {
         public virtual void ApplyDamage(int damage)
+        {
+
+        }
+
+        public virtual void AddToStat(Stats stat, int toAdd)
         {
 
         }

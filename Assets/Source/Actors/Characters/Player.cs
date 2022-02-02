@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Assets.Source.Core;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -12,6 +13,7 @@ namespace DungeonCrawl.Actors.Characters
         }
         protected override void OnUpdate(float deltaTime)
         {
+            UserInterface.Singleton.SetText($"HP: {Health} STR: {Strength} SHI: {Shield}", UserInterface.TextPosition.BottomLeft);
             if (Input.GetKeyDown(KeyCode.W))
             {
                 // Move up
@@ -77,6 +79,24 @@ namespace DungeonCrawl.Actors.Characters
                 return true;
             }
             return false;
+        }
+
+        public override void AddToStat(Stats stat, int toAdd)
+        {
+            switch (stat)
+            {
+                case Stats.Health:
+                    Health += toAdd;
+                    break;
+
+                case Stats.Strength:
+                    Strength += toAdd;
+                    break;
+
+                case Stats.Shield:
+                    Shield += toAdd;
+                    break;
+            }
         }
     }
 }

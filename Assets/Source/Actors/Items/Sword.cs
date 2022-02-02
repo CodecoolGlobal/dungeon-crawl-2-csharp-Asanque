@@ -26,6 +26,7 @@ namespace DungeonCrawl.Actors.Items
                 {
                     anotherActor.inventory.Add("sword", 1);
                 }
+                anotherActor.AddToStat(Stats.Strength, 5);
             }
             else
             {

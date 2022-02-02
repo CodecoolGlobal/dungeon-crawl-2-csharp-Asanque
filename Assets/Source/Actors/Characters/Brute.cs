@@ -15,7 +15,6 @@ namespace DungeonCrawl.Actors.Characters
         {
             if (lastFrame > 1)
             {
-                Debug.Log("Im dumb brute, i attak");
                 TryAttack();
                 lastFrame = 0;
             }
