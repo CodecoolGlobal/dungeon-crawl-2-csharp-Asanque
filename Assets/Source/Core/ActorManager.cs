@@ -11,6 +11,7 @@ namespace DungeonCrawl.Core
     /// </summary>
     public class ActorManager : MonoBehaviour
     {
+        private const int DefId = -5;
         /// <summary>
         ///     ActorManager singleton
         /// </summary>
@@ -97,7 +98,7 @@ namespace DungeonCrawl.Core
         /// <param name="position">Position</param>
         /// <param name="actorName">Actor's name (optional)</param>
         /// <returns></returns>
-        public T Spawn<T>((int x, int y) position, int id, string actorName = null) where T : Actor
+        public T Spawn<T>((int x, int y) position, int id = DefId, string actorName = null) where T : Actor
         {
             return Spawn<T>(position.x, position.y, id, actorName);
         }
