@@ -22,7 +22,7 @@ namespace DungeonCrawl.Actors.Items
                 {
                     player.Health = 100;
                 }
-                else { player.Health += 10; }
+                else { player.AddToStat(Stats.Health, 10); }
                 ActorManager.Singleton.DestroyActor(this);
                 return true;
             }
