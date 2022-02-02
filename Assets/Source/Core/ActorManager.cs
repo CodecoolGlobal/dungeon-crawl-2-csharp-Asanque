@@ -97,9 +97,9 @@ namespace DungeonCrawl.Core
         /// <param name="position">Position</param>
         /// <param name="actorName">Actor's name (optional)</param>
         /// <returns></returns>
-        public T Spawn<T>((int x, int y) position, string actorName = null) where T : Actor
+        public T Spawn<T>((int x, int y) position, int id, string actorName = null) where T : Actor
         {
-            return Spawn<T>(position.x, position.y, actorName);
+            return Spawn<T>(position.x, position.y, id, actorName);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace DungeonCrawl.Core
         /// <param name="y">Y coordinate</param>
         /// <param name="actorName">Actor's name (optional)</param>
         /// <returns></returns>
-        public T Spawn<T>(int x, int y, string actorName = null) where T : Actor
+        public T Spawn<T>(int x, int y, int id, string actorName = null) where T : Actor
         {
             var go = new GameObject();
             go.AddComponent<SpriteRenderer>();
@@ -119,6 +119,7 @@ namespace DungeonCrawl.Core
 
             go.name = actorName ?? component.DefaultName;
             component.Position = (x, y);
+            component.SetSprite(id);
 
             _allActors.Add(component);
 
