@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using Assets.Source.Core;
+﻿using DungeonCrawl.Core;
+using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -40,6 +40,12 @@ namespace DungeonCrawl.Actors.Characters
             {
                 TryAttack();
             }
+            CameraController.Singleton.Position = Position;
+        }
+
+        public override bool IsPlayer()
+        {
+            return true;
         }
 
         public override bool AttackAble(Actor anotherActor)

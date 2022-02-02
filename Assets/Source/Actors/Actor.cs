@@ -72,6 +72,11 @@ namespace DungeonCrawl.Actors
             }
         }
 
+        public virtual bool IsPlayer()
+        {
+            return false;
+        }
+
         public virtual bool AttackAble(Actor anotherActor)
         {
             return false;
