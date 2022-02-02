@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DungeonCrawl.Actors;
+using DungeonCrawl.Actors.Characters;
 using UnityEngine;
 using UnityEngine.U2D;
 
@@ -41,6 +42,19 @@ namespace DungeonCrawl.Core
         public Actor GetActorAt((int x, int y) position)
         {
             return _allActors.FirstOrDefault(actor => actor.Detectable && actor.Position == position);
+        }
+
+        public (int x, int y) GetActorPosition()
+        {
+            (int x, int y) position = default;
+            foreach (Actor actor in _allActors)
+            {
+                if (actor is Player)
+                {
+                    return actor.Position;
+                }
+            }
+            return position;
         }
 
         /// <summary>

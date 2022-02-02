@@ -1,13 +1,13 @@
 ﻿using System;
-using DungeonCrawl;
-using DungeonCrawl.Actors;
-using DungeonCrawl.Actors.Characters;
 using UnityEngine;
+using DungeonCrawl.Core;
 
-namespace Assets.Source.Actors.Characters
+namespace DungeonCrawl.Actors.Characters
 {
     internal class Demon : Character
     {
+        private Transform target;
+
         private float lastFrame = 0f;
 
         private int count = 0;
@@ -35,22 +35,46 @@ namespace Assets.Source.Actors.Characters
                 {
                     count = 0;
                 }
-
                 DemonMorph(count);
-                int possibleDirections = 4;
-                int randomDirection = UnityEngine.Random.Range(0, possibleDirections);
-                Direction direction = (Direction)randomDirection;
-                TryMove(direction);
-                lastFrame = 0;
+                FollowPlayer();
                 count++;
-            }
+        }
             else
             {
                 lastFrame += deltaTime;
             }
+}
+
+        private void FollowPlayer()
+        {
+            (int row, int col) playerPosition = ActorManager.Singleton.GetActorPosition();
+            int rowDifference = this.Position.x - playerPosition.row;
+            int colDifference = this.Position.y - playerPosition.col;
+            if (Math.Abs(rowDifference) > Math.Abs(colDifference))
+            {
+                if (rowDifference > 0)
+                {
+                    TryMove(Direction.Left);
+                }
+                else
+                {
+                    TryMove(Direction.Right);
+                }
+            }
+            else
+            {
+                if (colDifference > 0)
+                {
+                    TryMove(Direction.Down);
+                }
+                else
+                {
+                    TryMove(Direction.Up);
+                }
+            }
         }
 
-        public void DemonMorph(int count)
+        private void DemonMorph(int count)
         {
             switch (count)
             {
