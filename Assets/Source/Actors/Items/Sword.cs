@@ -18,14 +18,8 @@ namespace DungeonCrawl.Actors.Items
         {
             if (anotherActor.GetType() == typeof(Player))
             {
-                if (anotherActor.inventory.ContainsKey("sword"))
-                {
-                    anotherActor.inventory["sword"] += 1;
-                }
-                else
-                {
-                    anotherActor.inventory.Add("sword", 1);
-                }
+                anotherActor.inventory["sword"] += 1;
+                anotherActor.AddToStat(Stats.Strength, 5);
             }
             else
             {

@@ -136,13 +136,18 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
                     ActorManager.Singleton.Spawn<Wall>(position, Sprites.treeLeavesId);
                     break;
-                case 'B':
+                case 'P':
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.lakeId);
                     ActorManager.Singleton.Spawn<Door>(position, Sprites.boatId);
                     break;
                 case 'c':
                     ActorManager.Singleton.Spawn<Decoration>(position, Sprites.campfireId);
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
+                case '+':
+                    ActorManager.Singleton.Spawn<SmallHealth>(position);
+                    break;
+                case 'B':
+                    ActorManager.Singleton.Spawn<BigHealth>(position);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

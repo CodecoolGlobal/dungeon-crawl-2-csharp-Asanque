@@ -1,4 +1,6 @@
-﻿using DungeonCrawl.Core;
+﻿using Assets.Source.Core;
+using DungeonCrawl.Core;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
@@ -13,6 +15,7 @@ namespace DungeonCrawl.Actors.Characters
         }
         protected override void OnUpdate(float deltaTime)
         {
+            UserInterface.Singleton.PrintInterface(inventory, Health, Strength, Shield);
             if (Input.GetKeyDown(KeyCode.W))
             {
                 // Move up
@@ -84,6 +87,24 @@ namespace DungeonCrawl.Actors.Characters
                 return true;
             }
             return false;
+        }
+
+        public override void AddToStat(Stats stat, int toAdd)
+        {
+            switch (stat)
+            {
+                case Stats.Health:
+                    Health += toAdd;
+                    break;
+
+                case Stats.Strength:
+                    Strength += toAdd;
+                    break;
+
+                case Stats.Shield:
+                    Shield += toAdd;
+                    break;
+            }
         }
     }
 }
