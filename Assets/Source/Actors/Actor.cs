@@ -51,6 +51,10 @@ namespace DungeonCrawl.Actors
 
         public void SetSprite(int id)
         {
+            if (id == -5)
+            {
+                id = DefaultSpriteId;
+            }
             _spriteRenderer.sprite = ActorManager.Singleton.GetSprite(id);
         }
 
