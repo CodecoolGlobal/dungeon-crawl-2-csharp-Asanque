@@ -31,7 +31,11 @@ namespace DungeonCrawl.Actors
 
         private (int x, int y) _position;
         private SpriteRenderer _spriteRenderer;
-        public Dictionary<string, int> inventory = new Dictionary<string, int>();
+        public Dictionary<string, int> inventory = new Dictionary<string, int>() { 
+            {"sword", 0 },
+            {"shield", 0 },
+            {"key", 0 }
+        };
 
         private void Awake()
         {
