@@ -1,5 +1,6 @@
 ﻿using Assets.Source.Core;
 using DungeonCrawl.Core;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
@@ -14,7 +15,7 @@ namespace DungeonCrawl.Actors.Characters
         }
         protected override void OnUpdate(float deltaTime)
         {
-            UserInterface.Singleton.SetText($"HP: {Health} STR: {Strength} SHI: {Shield}", UserInterface.TextPosition.BottomLeft);
+            UserInterface.Singleton.PrintInterface(inventory, Health, Strength, Shield);
             if (Input.GetKeyDown(KeyCode.W))
             {
                 // Move up
