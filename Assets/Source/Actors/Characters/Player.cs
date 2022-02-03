@@ -7,6 +7,7 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Player : Character
     {
+        private float lastFrame = 0f;
         public Player()
         {
             Health = 100;
@@ -15,40 +16,49 @@ namespace DungeonCrawl.Actors.Characters
         }
         protected override void OnUpdate(float deltaTime)
         {
-            UserInterface.Singleton.PrintInterface(inventory, Health, Strength, Shield);
-            if (Input.GetKeyDown(KeyCode.W))
+            if (lastFrame > 0.1)
             {
-                // Move up
-                TryMove(Direction.Up);
+                UserInterface.Singleton.PrintInterface(inventory, Health, Strength, Shield);
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKey(KeyCode.W))
+                {
+                    // Move up
+                    TryMove(Direction.Up);
+                }
+
+                if (Input.GetKeyDown(KeyCode.S) || Input.GetKey(KeyCode.S))
+                {
+                    // Move down
+                    TryMove(Direction.Down);
+                }
+
+                if (Input.GetKeyDown(KeyCode.A) || Input.GetKey(KeyCode.A))
+                {
+                    // Move left
+                    TryMove(Direction.Left);
+                }
+
+                if (Input.GetKeyDown(KeyCode.D) || Input.GetKey(KeyCode.D))
+                {
+                    // Move right
+                    TryMove(Direction.Right);
+                }
+                if (Input.GetKeyDown(KeyCode.LeftShift))
+                {
+                    ActorManager.Singleton.SavePlayerInventory();
+                    ActorManager.Singleton.DestroyAllActors();
+                    MapLoader.LoadMap(2);
+                    ActorManager.Singleton.LoadPlayerInventory();
+                }
+                lastFrame = 0;
+            }
+            else
+            {
+                lastFrame += deltaTime;
             }
 
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                // Move down
-                TryMove(Direction.Down);
-            }
-
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                // Move left
-                TryMove(Direction.Left);
-            }
-
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                // Move right
-                TryMove(Direction.Right);
-            }
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 TryAttack();
-            }
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                ActorManager.Singleton.SavePlayerInventory();
-                ActorManager.Singleton.DestroyAllActors();
-                MapLoader.LoadMap(2);
-                ActorManager.Singleton.LoadPlayerInventory();
             }
             CameraController.Singleton.Position = Position;
         }
