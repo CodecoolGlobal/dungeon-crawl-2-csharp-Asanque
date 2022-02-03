@@ -1,6 +1,7 @@
 ﻿using Assets.Source.Core;
 using DungeonCrawl.Core;
 using UnityEngine;
+using Assets.Source.Sounds;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -26,24 +27,28 @@ namespace DungeonCrawl.Actors.Characters
                 {
                     // Move up
                     TryMove(Direction.Up);
+                    FindObjectOfType<AudioManager>().Play("StepOne");
                 }
 
                 if (Input.GetKeyDown(KeyCode.S) || Input.GetKey(KeyCode.S))
                 {
                     // Move down
                     TryMove(Direction.Down);
+                    FindObjectOfType<AudioManager>().Play("StepOne");
                 }
 
                 if (Input.GetKeyDown(KeyCode.A) || Input.GetKey(KeyCode.A))
                 {
                     // Move left
                     TryMove(Direction.Left);
+                    FindObjectOfType<AudioManager>().Play("StepOne");
                 }
 
                 if (Input.GetKeyDown(KeyCode.D) || Input.GetKey(KeyCode.D))
                 {
                     // Move right
                     TryMove(Direction.Right);
+                    FindObjectOfType<AudioManager>().Play("StepOne");
                 }
                 lastFrame = 0;
             }

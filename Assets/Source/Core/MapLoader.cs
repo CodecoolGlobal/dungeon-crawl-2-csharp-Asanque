@@ -76,7 +76,7 @@ namespace DungeonCrawl.Core
             CameraController.Singleton.Size = 10;
             CameraController.Singleton.Position = (width / 2, -height / 2);
             MapId++;
-            if (MapId is 3)
+            if (MapId is 4)
             {
                 MapId = 1;
             }
@@ -95,6 +95,40 @@ namespace DungeonCrawl.Core
                     break;
                 case '.':
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
+                    break;
+                case 'r':
+                    ActorManager.Singleton.Spawn<Floor>(position, Sprites.road);
+                    break;
+                case '@':
+                    ActorManager.Singleton.Spawn<Floor>(position, Sprites.bridgeUp);
+                    break;
+                case '!':
+                    ActorManager.Singleton.Spawn<Floor>(position, Sprites.river);
+                    ActorManager.Singleton.Spawn<Floor>(position, Sprites.bridgeStraight);
+                    break;
+                case '$':
+                    ActorManager.Singleton.Spawn<Floor>(position, Sprites.bridgeDown);
+                    break;
+                case '_':
+                    ActorManager.Singleton.Spawn<Wall>(position, Sprites.smallHouse);
+                    break;
+                case '%':
+                    ActorManager.Singleton.Spawn<Wall>(position, Sprites.houseRoofUp);
+                    break;
+                case '^':
+                    ActorManager.Singleton.Spawn<Wall>(position, Sprites.houseRoofStraight);
+                    break;
+                case '&':
+                    ActorManager.Singleton.Spawn<Wall>(position, Sprites.houseRoofDown);
+                    break;
+                case '*':
+                    ActorManager.Singleton.Spawn<Wall>(position, Sprites.houseWall);
+                    break;
+                case '~':
+                    ActorManager.Singleton.Spawn<Wall>(position, Sprites.houseDoor);
+                    break;
+                case 'F':
+                    ActorManager.Singleton.Spawn<Wall>(position, Sprites.flag);
                     break;
                 case 'p':
                     ActorManager.Singleton.Spawn<Player>(position);
@@ -152,6 +186,9 @@ namespace DungeonCrawl.Core
                 case 'L':
                     ActorManager.Singleton.Spawn<Wall>(position, Sprites.lakeId);
                     break;
+                case 'R':
+                    ActorManager.Singleton.Spawn<Wall>(position, Sprites.river);
+                    break;
                 case 'I':
                     ActorManager.Singleton.Spawn<Wall>(position, Sprites.treeTrunkId);
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
@@ -161,8 +198,8 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Wall>(position, Sprites.treeLeavesId);
                     break;
                 case 'P':
-                    ActorManager.Singleton.Spawn<Floor>(position, Sprites.lakeId);
                     ActorManager.Singleton.Spawn<DoorSpecial>(position, Sprites.boatId);
+                    ActorManager.Singleton.Spawn<Floor>(position, Sprites.lakeId);
                     break;
                 case 'c':
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
