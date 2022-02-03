@@ -15,7 +15,7 @@ namespace DungeonCrawl.Actors.Characters
             Health = 20;
             Strength = 5;
         }
-    public override bool OnCollision(Actor anotherActor)
+        public override bool OnCollision(Actor anotherActor)
         {
             if (anotherActor.GetType() == typeof(Player))
             {
