@@ -10,10 +10,21 @@ using Assets.Source.Sounds;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
+    public static AudioManager instance;
 
     // Start is called before the first frame update
     void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
         foreach(var sound in sounds)
         {
             sound.source = gameObject.AddComponent<AudioSource>();
