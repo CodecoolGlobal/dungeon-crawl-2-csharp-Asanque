@@ -8,7 +8,7 @@ namespace DungeonCrawl.Actors.Characters
         public Brute()
         {
             Health = 50;
-            Strength = 10;
+            Strength = 25;
         }
 
         protected override void OnUpdate(float deltaTime)

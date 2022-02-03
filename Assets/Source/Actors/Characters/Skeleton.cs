@@ -9,7 +9,7 @@ namespace DungeonCrawl.Actors.Characters
         public Skeleton()
         {
             Health = 25;
-            Strength = 5;
+            Strength = 10;
         }
         private float lastFrame = 0f;
 
@@ -24,7 +24,7 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
-            Debug.Log("Oink Oink...");
+            Debug.Log("Bye!");
         }
 
         protected override void OnUpdate(float deltaTime)

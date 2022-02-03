@@ -10,8 +10,12 @@ namespace DungeonCrawl.Actors.Characters
 
         private int count = 0;
 
-
-        public override bool OnCollision(Actor anotherActor)
+        public Demon()
+        {
+            Health = 20;
+            Strength = 5;
+        }
+    public override bool OnCollision(Actor anotherActor)
         {
             if (anotherActor.GetType() == typeof(Player))
             {
@@ -35,6 +39,7 @@ namespace DungeonCrawl.Actors.Characters
                 }
                 DemonMorph(count);
                 FollowPlayer();
+                TryAttack();
                 lastFrame = 0;
                 count++;
         }
