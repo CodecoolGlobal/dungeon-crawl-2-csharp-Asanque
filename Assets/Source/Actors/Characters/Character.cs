@@ -11,7 +11,12 @@ namespace DungeonCrawl.Actors.Characters
         public int Strength { get; set; }
         public override void ApplyDamage(int damage)
         {
-            Health -= damage - Shield;
+            int incomingDamage = damage - Shield;
+            if (incomingDamage < 0)
+            {
+                incomingDamage = 0;
+            }
+            Health -= incomingDamage;
 
             if (Shield > 0)
             {
