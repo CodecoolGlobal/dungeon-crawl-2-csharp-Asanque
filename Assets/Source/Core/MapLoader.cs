@@ -5,6 +5,7 @@ using System;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using Assets.Source.Actors;
+using Assets.Source.Core;
 
 namespace DungeonCrawl.Core
 {
@@ -13,6 +14,7 @@ namespace DungeonCrawl.Core
     /// </summary>
     public static class MapLoader
     {
+        private static int NewGameCount = -1;
         private static int MapId = 1;
         private const int DefId = -5;
         public static GameManager GameManager
@@ -45,6 +47,11 @@ namespace DungeonCrawl.Core
         /// <param name="id"></param>
         public static void LoadMap()
         {
+            if (MapId == 1)
+            {
+                NewGameCount++;
+            }
+
             var lines = Regex.Split(Resources.Load<TextAsset>($"map_{MapId}").text, "\r\n|\r|\n");
             Sprites.SetSprites(MapId);
 
@@ -72,6 +79,10 @@ namespace DungeonCrawl.Core
             if (MapId is 3)
             {
                 MapId = 1;
+            }
+            if (NewGameCount > 0)
+            {
+                UserInterface.Singleton.PrintNewGameText(NewGameCount);
             }
         }
 
