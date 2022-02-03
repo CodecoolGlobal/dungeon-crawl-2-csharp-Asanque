@@ -16,6 +16,10 @@ namespace DungeonCrawl.Actors.Items
         public override string DefaultName => "Decor";
         public override bool OnCollision(Actor anotherActor)
         {
+            if (anotherActor.GetType() == typeof(Demon))
+            {
+                return true;
+            }
             return false;
         }
     }

@@ -21,6 +21,10 @@ namespace DungeonCrawl.Actors.Items
                 anotherActor.inventory["sword"] += 1;
                 anotherActor.AddToStat(Stats.Strength, 5);
             }
+            else if (anotherActor.GetType() == typeof(Demon))
+            {
+                return true;
+            }
             else
             {
                 return false;

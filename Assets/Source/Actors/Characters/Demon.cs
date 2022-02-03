@@ -6,8 +6,6 @@ namespace DungeonCrawl.Actors.Characters
 {
     internal class Demon : Character
     {
-        private Transform target;
-
         private float lastFrame = 0f;
 
         private int count = 0;
@@ -29,7 +27,7 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnUpdate(float deltaTime)
         {
-            if (lastFrame > 1.5)
+            if (lastFrame > 0.3)
             {
                 if (count == 5)
                 {
@@ -37,6 +35,7 @@ namespace DungeonCrawl.Actors.Characters
                 }
                 DemonMorph(count);
                 FollowPlayer();
+                lastFrame = 0;
                 count++;
         }
             else
