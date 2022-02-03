@@ -31,7 +31,7 @@ namespace DungeonCrawl.Actors
             {"sword", 0 },
             {"shield", 0 },
             {"key", 0 },
-            {"specialKey", 1 }
+            {"specialKey", 0 }
         };
 
         private void Awake()
