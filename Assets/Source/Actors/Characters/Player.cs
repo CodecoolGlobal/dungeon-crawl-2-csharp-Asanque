@@ -15,6 +15,10 @@ namespace DungeonCrawl.Actors.Characters
         }
         protected override void OnUpdate(float deltaTime)
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
             if (lastFrame > 0.1)
             {
                 UserInterface.Singleton.PrintInterface(inventory, Health, Strength, Shield);
