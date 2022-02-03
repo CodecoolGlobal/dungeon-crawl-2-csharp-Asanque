@@ -1,5 +1,4 @@
-﻿
-using DungeonCrawl.Actors.Characters;
+﻿using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Actors.Items

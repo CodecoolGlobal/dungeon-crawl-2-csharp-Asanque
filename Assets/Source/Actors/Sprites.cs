@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Assets.Source.Actors
 {
     public static class Sprites
@@ -26,6 +21,9 @@ namespace Assets.Source.Actors
             switch (mapId)
             {
                 case 1:
+                    wallId = DefId;
+                    floorId = DefId;
+                    doorId = DefId;
                     break;
                 case 2:
                     wallId = 144;

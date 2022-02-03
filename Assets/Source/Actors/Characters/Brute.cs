@@ -27,7 +27,7 @@ namespace DungeonCrawl.Actors.Characters
 
         public override bool OnCollision(Actor anotherActor)
         {
-            if (anotherActor.GetType() == typeof(Player) || anotherActor.GetType() == typeof(Skeleton) || anotherActor.GetType() == typeof(Demon))
+            if (anotherActor is Player || anotherActor is Skeleton)
             {
                 return false;
             }

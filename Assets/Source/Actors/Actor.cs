@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Assets.Source.Core;
+﻿using System.Collections.Generic;
 using DungeonCrawl.Core;
 using UnityEngine;
 
@@ -34,7 +30,8 @@ namespace DungeonCrawl.Actors
         public Dictionary<string, int> inventory = new Dictionary<string, int>() { 
             {"sword", 0 },
             {"shield", 0 },
-            {"key", 0 }
+            {"key", 0 },
+            {"specialKey", 1 }
         };
 
         private void Awake()

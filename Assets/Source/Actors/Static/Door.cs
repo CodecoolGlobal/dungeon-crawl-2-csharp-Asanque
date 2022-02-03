@@ -4,7 +4,7 @@ namespace DungeonCrawl.Actors.Static
 {
     public class Door : Actor
     {
-        private bool isOpen = false;
+        protected bool isOpen = false;
         public override bool OnCollision(Actor anotherActor)
         {
             if (anotherActor is Skeleton)
@@ -14,18 +14,28 @@ namespace DungeonCrawl.Actors.Static
             if (!isOpen)
             {
                 Player player = (Player)anotherActor;
-                if (player.HasKey())
-                {
-                    isOpen = true;
-                    player.inventory["key"] -= 1;
-                    SetSprite(487);
-                    return true;
-                };
-                return false;
+                CheckKeys(player);
             }
             return true;
         }
         public override int DefaultSpriteId => 485;
         public override string DefaultName => "Door";
+
+        public virtual bool CheckKeys(Player player)
+        {
+            if (player.HasKey("key"))
+            {
+                UseKey(player);
+                return true;
+            };
+            return false;
+        }
+
+        public virtual void UseKey(Player player)
+        {
+            isOpen = true;
+            player.inventory["key"] -= 1;
+            SetSprite(487);
+        }
     }
 }
