@@ -14,7 +14,7 @@ namespace DungeonCrawl.Core
     /// </summary>
     public static class MapLoader
     {
-        public static int NewGameCount = 10;
+        public static int NewGameCount = -1;
         private static int MapId = 1;
         private const int DefId = -5;
         public static GameManager GameManager
