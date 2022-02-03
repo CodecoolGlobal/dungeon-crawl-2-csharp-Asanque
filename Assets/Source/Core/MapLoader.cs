@@ -141,13 +141,15 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Door>(position, Sprites.boatId);
                     break;
                 case 'c':
-                    ActorManager.Singleton.Spawn<Decoration>(position, Sprites.campfireId);
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
+                    ActorManager.Singleton.Spawn<Decoration>(position, Sprites.campfireId);
                     break;
                 case '+':
+                    ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
                     ActorManager.Singleton.Spawn<SmallHealth>(position);
                     break;
                 case 'B':
+                    ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
                     ActorManager.Singleton.Spawn<BigHealth>(position);
                     break;
                 case 'g':
