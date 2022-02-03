@@ -1,4 +1,5 @@
-﻿using DungeonCrawl.Core;
+﻿using Assets.Source.Core;
+using DungeonCrawl.Core;
 using System.Collections.Generic;
 
 namespace DungeonCrawl.Actors.Characters
@@ -29,7 +30,6 @@ namespace DungeonCrawl.Actors.Characters
             {
                 // Die
                 OnDeath();
-
                 ActorManager.Singleton.DestroyActor(this);
             }
         }

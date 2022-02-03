@@ -84,7 +84,8 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
-            Debug.Log("Oh no, I'm dead!");
+            UserInterface.Singleton.ClearUi();
+            UserInterface.Singleton.PrintGameOverText();
         }
 
         public override int DefaultSpriteId => 24;
