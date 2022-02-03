@@ -19,5 +19,6 @@ namespace DungeonCrawl.Actors.Items
             ActorManager.Singleton.DestroyActor(this);
             return true;
         }
+        public override int DefaultSpriteId => 559;
     }
 }
