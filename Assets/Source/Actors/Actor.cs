@@ -34,7 +34,8 @@ namespace DungeonCrawl.Actors
         public Dictionary<string, int> inventory = new Dictionary<string, int>() { 
             {"sword", 0 },
             {"shield", 0 },
-            {"key", 0 }
+            {"key", 0 },
+            {"specialKey", 1 }
         };
 
         private void Awake()
