@@ -1,4 +1,5 @@
-﻿using DungeonCrawl.Actors.Characters;
+﻿using Assets.Source.Core;
+using DungeonCrawl.Actors.Characters;
 using UnityEngine;
 
 namespace DungeonCrawl.Actors.Static
@@ -9,7 +10,7 @@ namespace DungeonCrawl.Actors.Static
         {
             if (anotherActor is Player)
             {
-                Debug.Log("Credits:");
+                UserInterface.Singleton.SetText("Creators: Peti, Nati, Marci, Asanque", UserInterface.TextPosition.MiddleCenter);
             }
             return true;
         }

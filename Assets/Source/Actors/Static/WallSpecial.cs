@@ -1,4 +1,5 @@
-﻿using DungeonCrawl.Actors.Characters;
+﻿using Assets.Source.Core;
+using DungeonCrawl.Actors.Characters;
 
 namespace DungeonCrawl.Actors.Static
 {
@@ -10,6 +11,7 @@ namespace DungeonCrawl.Actors.Static
             {
                 return false;
             }
+            UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.MiddleCenter);
             return true;
         }
     }
