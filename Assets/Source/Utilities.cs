@@ -15,7 +15,7 @@ namespace DungeonCrawl
     public static class Utilities
     {
 
-        public static List<Type> EnemyTypes= new List<Type> { typeof(Brute), typeof(Skeleton)};
+        public static List<Type> EnemyTypes= new List<Type> { typeof(Brute), typeof(Skeleton), typeof(Demon)};
         
         public static List<int[]> Directions = new List<int[]> 
         { new int[] { 0, 1 }, new int[] {0, -1}, new int[] {-1, 0 }, new int[] {1, 0} };
