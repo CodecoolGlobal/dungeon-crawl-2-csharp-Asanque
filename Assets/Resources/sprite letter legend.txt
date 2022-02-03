@@ -4,7 +4,7 @@ D -  door
 # - wall
 . - floor
 p - player
-s - skeleton / pig
+s - skeleton
 b - brute
 w - sword
 H - hidden wall
