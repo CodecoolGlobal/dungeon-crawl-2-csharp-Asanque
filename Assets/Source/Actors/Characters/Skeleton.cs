@@ -8,8 +8,8 @@ namespace DungeonCrawl.Actors.Characters
         private int count = 0;
         public Skeleton()
         {
-            Health = 25;
-            Strength = 10;
+            Health = 25 * Utilities.StatMultiplier;
+            Strength = 10 * Utilities.StatMultiplier;
         }
         private float lastFrame = 0f;
 

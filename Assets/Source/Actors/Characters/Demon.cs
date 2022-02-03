@@ -12,8 +12,8 @@ namespace DungeonCrawl.Actors.Characters
 
         public Demon()
         {
-            Health = 20;
-            Strength = 5;
+            Health = 20 * Utilities.StatMultiplier;
+            Strength = 5 * Utilities.StatMultiplier;
         }
         public override bool OnCollision(Actor anotherActor)
         {

@@ -13,7 +13,7 @@ namespace DungeonCrawl.Actors.Items
             if (anotherActor is Player)
             {
                 anotherActor.inventory["sword"] += 1;
-                anotherActor.AddToStat(Stats.Strength, 5);
+                anotherActor.AddToStat(Stats.Strength, 5 * Utilities.StatMultiplier);
             }
             else if (anotherActor is Demon)
             {
