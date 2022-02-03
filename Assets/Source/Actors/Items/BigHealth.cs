@@ -15,14 +15,14 @@ namespace DungeonCrawl.Actors.Items
         public override string DefaultName => "BigHealth";
         public override bool OnCollision(Actor anotherActor)
         {
-            if (anotherActor.GetType() == typeof(Player))
+            if (anotherActor is Player)
             {
                 Player player = (Player)anotherActor;
                 player.Health = 100;
                 ActorManager.Singleton.DestroyActor(this);
                 return true;
             }
-            else if (anotherActor.GetType() == typeof(Demon))
+            else if (anotherActor is Demon )
             {
                 return true;
             }

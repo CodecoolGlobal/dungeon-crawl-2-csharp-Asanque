@@ -16,11 +16,11 @@ namespace DungeonCrawl.Actors.Items
         public override string DefaultName => "Key";
         public override bool OnCollision(Actor anotherActor)
         {
-            if (anotherActor.GetType() == typeof(Player))
+            if (anotherActor is Player)
             {
                 anotherActor.inventory["key"] += 1;
             }
-            else if (anotherActor.GetType() == typeof(Demon))
+            else if (anotherActor is Demon)
             {
                 return true;
             }

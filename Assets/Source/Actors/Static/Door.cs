@@ -7,7 +7,7 @@ namespace DungeonCrawl.Actors.Static
         private bool isOpen = false;
         public override bool OnCollision(Actor anotherActor)
         {
-            if (anotherActor.GetType() == typeof(Skeleton))
+            if (anotherActor is Skeleton)
             {
                 return false;
             }

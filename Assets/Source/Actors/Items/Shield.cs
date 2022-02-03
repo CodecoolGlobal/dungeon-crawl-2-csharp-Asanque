@@ -16,12 +16,12 @@ namespace DungeonCrawl.Actors.Items
         public override string DefaultName => "Shield";
         public override bool OnCollision(Actor anotherActor)
         {
-            if (anotherActor.GetType() == typeof(Player))
+            if (anotherActor is Player)
             {
                 anotherActor.inventory["shield"] += 1;
                 anotherActor.AddToStat(Stats.Shield, 5);
             }
-            else if (anotherActor.GetType() == typeof(Demon))
+            else if (anotherActor is Demon)
             {
                 return true;
             }

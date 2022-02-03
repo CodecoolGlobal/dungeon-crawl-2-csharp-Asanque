@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
-using DungeonCrawl.Actors.Characters;
-using DungeonCrawl.Core;
+﻿using DungeonCrawl.Actors.Characters;
 
 
 namespace DungeonCrawl.Actors.Items
@@ -16,7 +9,7 @@ namespace DungeonCrawl.Actors.Items
         public override string DefaultName => "Decor";
         public override bool OnCollision(Actor anotherActor)
         {
-            if (anotherActor.GetType() == typeof(Demon))
+            if (anotherActor is Demon)
             {
                 return true;
             }
