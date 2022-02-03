@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
-using DungeonCrawl.Actors.Characters;
+﻿using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Core;
 
 
@@ -16,12 +10,12 @@ namespace DungeonCrawl.Actors.Items
         public override string DefaultName => "Sword";
         public override bool OnCollision(Actor anotherActor)
         {
-            if (anotherActor.GetType() == typeof(Player))
+            if (anotherActor is Player)
             {
                 anotherActor.inventory["sword"] += 1;
                 anotherActor.AddToStat(Stats.Strength, 5);
             }
-            else if (anotherActor.GetType() == typeof(Demon))
+            else if (anotherActor is Demon)
             {
                 return true;
             }

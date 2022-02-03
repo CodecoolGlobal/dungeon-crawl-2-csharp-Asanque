@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Assets.Source.Core;
+﻿using System.Collections.Generic;
 using DungeonCrawl.Core;
 using UnityEngine;
 

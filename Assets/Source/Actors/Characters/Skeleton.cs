@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
 {
     public class Skeleton : Character
     {
+        private int count = 0;
         public Skeleton()
         {
             Health = 25;
@@ -29,20 +31,41 @@ namespace DungeonCrawl.Actors.Characters
         {
             if (lastFrame > 1)
             {
+                if (count == 2)
+                {
+                    count = 0;
+                }
+                DemonMorph(count);
                 int possibleDirections = 4;
-                int randomDirection = Random.Range(0, possibleDirections);
+                int randomDirection = UnityEngine.Random.Range(0, possibleDirections);
                 Direction direction = (Direction)randomDirection;
                 TryMove(direction);
                 lastFrame = 0;
                 TryAttack();
+                count++;
             }
-            else 
+            else
             {
                 lastFrame += deltaTime;
             }
         }
 
-        public override int DefaultSpriteId => 364;
+        public override int DefaultSpriteId => 609;
         public override string DefaultName => "Skeleton";
+
+        private void DemonMorph(int count)
+        {
+            switch (count)
+            {
+                case 0:
+                    SetSprite(565);
+                    break;
+                case 1:
+                    SetSprite(609);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }
