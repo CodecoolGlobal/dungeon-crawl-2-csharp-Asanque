@@ -82,7 +82,7 @@ namespace DungeonCrawl.Actors
             return false;
         }
 
-        public virtual bool AttackAble(Actor anotherActor)
+        public virtual bool Attackable(Actor anotherActor)
         {
             return false;
         }

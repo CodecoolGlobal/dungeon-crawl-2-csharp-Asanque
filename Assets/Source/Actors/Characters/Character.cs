@@ -54,7 +54,6 @@ namespace DungeonCrawl.Actors.Characters
                 case true:
                     List<Actor> enemiesNearMe = CollectEnemiesNearMe();
                     AttackEnemiesNearMe(enemiesNearMe);
-
                     break;
                 case false:
                     break;
@@ -83,7 +82,7 @@ namespace DungeonCrawl.Actors.Characters
                 var actorAtTargetPosition = ActorManager.Singleton.GetActorAt(targetPosition);
                 if (actorAtTargetPosition != null)
                 {
-                    if (actorAtTargetPosition.AttackAble(this))
+                    if (actorAtTargetPosition.Attackable(this))
                     {
                         enemies.Add(actorAtTargetPosition);
                     }
@@ -100,9 +99,9 @@ namespace DungeonCrawl.Actors.Characters
             }
         }
 
-        public override bool AttackAble(Actor anotherActor)
+        public override bool Attackable(Actor anotherActor)
         {
-            if (anotherActor.GetType() == typeof(Player))
+            if (anotherActor is Player)
             {
                 return true;
             }

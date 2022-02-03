@@ -67,7 +67,7 @@ namespace DungeonCrawl.Actors.Characters
             return true;
         }
 
-        public override bool AttackAble(Actor anotherActor)
+        public override bool Attackable(Actor anotherActor)
         {
             if (Utilities.EnemyTypes.Contains(anotherActor.GetType()))
             {
