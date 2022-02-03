@@ -8,12 +8,12 @@ namespace DungeonCrawl.Actors.Characters
         public Brute()
         {
             Health = 50;
-            Strength = 10;
+            Strength = 25;
         }
 
         protected override void OnUpdate(float deltaTime)
         {
-            if (lastFrame > 1)
+            if (lastFrame > 0.25)
             {
                 TryAttack();
                 lastFrame = 0;
@@ -27,7 +27,7 @@ namespace DungeonCrawl.Actors.Characters
 
         public override bool OnCollision(Actor anotherActor)
         {
-            if (anotherActor.GetType() == typeof(Player) || anotherActor.GetType() == typeof(Skeleton) || anotherActor.GetType() == typeof(Demon))
+            if (anotherActor is Player || anotherActor is Skeleton)
             {
                 return false;
             }

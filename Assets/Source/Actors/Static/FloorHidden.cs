@@ -7,7 +7,7 @@ namespace DungeonCrawl.Actors.Static
     {
         public override bool OnCollision(Actor anotherActor)
         {
-            if (anotherActor.GetType() == typeof(Player))
+            if (anotherActor is Player)
             {
                 Debug.Log("Credits:");
             }

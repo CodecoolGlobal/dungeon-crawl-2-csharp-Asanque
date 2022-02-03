@@ -1,6 +1,5 @@
 ﻿using Assets.Source.Core;
 using DungeonCrawl.Core;
-using System.Collections.Generic;
 using UnityEngine;
 using Assets.Source.Sounds;
 
@@ -8,6 +7,7 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Player : Character
     {
+        private float lastFrame = 0f;
         public Player()
         {
             Health = 100;
@@ -16,44 +16,54 @@ namespace DungeonCrawl.Actors.Characters
         }
         protected override void OnUpdate(float deltaTime)
         {
-            UserInterface.Singleton.PrintInterface(inventory, Health, Strength, Shield);
-            if (Input.GetKeyDown(KeyCode.W))
+            if (lastFrame > 0.1)
             {
-                // Move up
-                TryMove(Direction.Up);
-                FindObjectOfType<AudioManager>().Play("StepOne");
+                UserInterface.Singleton.PrintInterface(inventory, Health, Strength, Shield);
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKey(KeyCode.W))
+                {
+                    // Move up
+                    TryMove(Direction.Up);
+                    FindObjectOfType<AudioManager>().Play("StepOne");
+                }
+
+                if (Input.GetKeyDown(KeyCode.S) || Input.GetKey(KeyCode.S))
+                {
+                    // Move down
+                    TryMove(Direction.Down);
+                    FindObjectOfType<AudioManager>().Play("StepOne");
+                }
+
+                if (Input.GetKeyDown(KeyCode.A) || Input.GetKey(KeyCode.A))
+                {
+                    // Move left
+                    TryMove(Direction.Left);
+                    FindObjectOfType<AudioManager>().Play("StepOne");
+                }
+
+                if (Input.GetKeyDown(KeyCode.D) || Input.GetKey(KeyCode.D))
+                {
+                    // Move right
+                    TryMove(Direction.Right);
+                    FindObjectOfType<AudioManager>().Play("StepOne");
+                }
+                lastFrame = 0;
+            }
+            else
+            {
+                lastFrame += deltaTime;
             }
 
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                // Move down
-                TryMove(Direction.Down);
-                FindObjectOfType<AudioManager>().Play("StepOne");
-            }
-
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                // Move left
-                TryMove(Direction.Left);
-                FindObjectOfType<AudioManager>().Play("StepOne");
-            }
-
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                // Move right
-                TryMove(Direction.Right);
-                FindObjectOfType<AudioManager>().Play("StepOne");
-            }
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                TryAttack();
-            }
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
                 ActorManager.Singleton.SavePlayerInventory();
                 ActorManager.Singleton.DestroyAllActors();
-                MapLoader.LoadMap(2);
+                MapLoader.LoadMap();
                 ActorManager.Singleton.LoadPlayerInventory();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                TryAttack();
             }
             CameraController.Singleton.Position = Position;
         }
@@ -63,7 +73,7 @@ namespace DungeonCrawl.Actors.Characters
             return true;
         }
 
-        public override bool AttackAble(Actor anotherActor)
+        public override bool Attackable(Actor anotherActor)
         {
             if (Utilities.EnemyTypes.Contains(anotherActor.GetType()))
             {
@@ -79,7 +89,8 @@ namespace DungeonCrawl.Actors.Characters
 
         protected override void OnDeath()
         {
-            Debug.Log("Oh no, I'm dead!");
+            UserInterface.Singleton.ClearUi();
+            UserInterface.Singleton.PrintGameOverText();
         }
 
         public override int DefaultSpriteId => 24;
@@ -93,9 +104,9 @@ namespace DungeonCrawl.Actors.Characters
             }
         }
 
-        public bool HasKey()
+        public bool HasKey(string key)
         {
-            if (inventory.ContainsKey("key") && inventory["key"] > 0 )
+            if (inventory[key] > 0 )
             {
                 return true;
             }

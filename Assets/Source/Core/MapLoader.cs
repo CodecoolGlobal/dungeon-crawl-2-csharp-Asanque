@@ -5,6 +5,7 @@ using System;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using Assets.Source.Actors;
+using Assets.Source.Core;
 
 namespace DungeonCrawl.Core
 {
@@ -13,6 +14,8 @@ namespace DungeonCrawl.Core
     /// </summary>
     public static class MapLoader
     {
+        private static int NewGameCount = -1;
+        private static int MapId = 1;
         private const int DefId = -5;
         public static GameManager GameManager
         {
@@ -42,10 +45,15 @@ namespace DungeonCrawl.Core
         ///     Constructs map from txt file and spawns actors at appropriate positions
         /// </summary>
         /// <param name="id"></param>
-        public static void LoadMap(int id)
+        public static void LoadMap()
         {
-            var lines = Regex.Split(Resources.Load<TextAsset>($"map_{id}").text, "\r\n|\r|\n");
-            Sprites.SetSprites(id);
+            if (MapId == 1)
+            {
+                NewGameCount++;
+            }
+
+            var lines = Regex.Split(Resources.Load<TextAsset>($"map_{MapId}").text, "\r\n|\r|\n");
+            Sprites.SetSprites(MapId);
 
             // Read map size from the first line
             var split = lines[0].Split(' ');
@@ -67,6 +75,15 @@ namespace DungeonCrawl.Core
             // Set default camera size and position
             CameraController.Singleton.Size = 10;
             CameraController.Singleton.Position = (width / 2, -height / 2);
+            MapId++;
+            if (MapId is 3)
+            {
+                MapId = 1;
+            }
+            if (NewGameCount > 0)
+            {
+                UserInterface.Singleton.PrintNewGameText(NewGameCount);
+            }
         }
 
         private static void SpawnActor(char c, (int x, int y) position)
@@ -87,8 +104,11 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Skeleton>(position);
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
                     break;
-                case 'D':
+                case 'd':
                     ActorManager.Singleton.Spawn<Door>(position, Sprites.doorId);
+                    break;
+                case 'D':
+                    ActorManager.Singleton.Spawn<DoorSpecial>(position, Sprites.doorId);
                     break;
                 case 'b':
                     ActorManager.Singleton.Spawn<Brute>(position);
@@ -99,6 +119,10 @@ namespace DungeonCrawl.Core
                 case 'k':
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
                     ActorManager.Singleton.Spawn<Key>(position);
+                    break;
+                case 'K':
+                    ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
+                    ActorManager.Singleton.Spawn<KeySpecial>(position);
                     break;
                 case 'w':
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
@@ -138,16 +162,18 @@ namespace DungeonCrawl.Core
                     break;
                 case 'P':
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.lakeId);
-                    ActorManager.Singleton.Spawn<Door>(position, Sprites.boatId);
+                    ActorManager.Singleton.Spawn<DoorSpecial>(position, Sprites.boatId);
                     break;
                 case 'c':
-                    ActorManager.Singleton.Spawn<Decoration>(position, Sprites.campfireId);
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
+                    ActorManager.Singleton.Spawn<Decoration>(position, Sprites.campfireId);
                     break;
                 case '+':
+                    ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
                     ActorManager.Singleton.Spawn<SmallHealth>(position);
                     break;
                 case 'B':
+                    ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
                     ActorManager.Singleton.Spawn<BigHealth>(position);
                     break;
                 case 'g':

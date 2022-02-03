@@ -1,6 +1,6 @@
-﻿using DungeonCrawl.Core;
+﻿using Assets.Source.Core;
+using DungeonCrawl.Core;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
 {
@@ -11,7 +11,12 @@ namespace DungeonCrawl.Actors.Characters
         public int Strength { get; set; }
         public override void ApplyDamage(int damage)
         {
-            Health -= damage - Shield;
+            int incomingDamage = damage - Shield;
+            if (incomingDamage < 0)
+            {
+                incomingDamage = 0;
+            }
+            Health -= incomingDamage;
 
             if (Shield > 0)
             {
@@ -25,7 +30,6 @@ namespace DungeonCrawl.Actors.Characters
             {
                 // Die
                 OnDeath();
-
                 ActorManager.Singleton.DestroyActor(this);
             }
         }
@@ -50,7 +54,6 @@ namespace DungeonCrawl.Actors.Characters
                 case true:
                     List<Actor> enemiesNearMe = CollectEnemiesNearMe();
                     AttackEnemiesNearMe(enemiesNearMe);
-
                     break;
                 case false:
                     break;
@@ -79,7 +82,7 @@ namespace DungeonCrawl.Actors.Characters
                 var actorAtTargetPosition = ActorManager.Singleton.GetActorAt(targetPosition);
                 if (actorAtTargetPosition != null)
                 {
-                    if (actorAtTargetPosition.AttackAble(this))
+                    if (actorAtTargetPosition.Attackable(this))
                     {
                         enemies.Add(actorAtTargetPosition);
                     }
@@ -96,9 +99,9 @@ namespace DungeonCrawl.Actors.Characters
             }
         }
 
-        public override bool AttackAble(Actor anotherActor)
+        public override bool Attackable(Actor anotherActor)
         {
-            if (anotherActor.GetType() == typeof(Player))
+            if (anotherActor is Player)
             {
                 return true;
             }
