@@ -14,7 +14,7 @@ namespace DungeonCrawl.Actors.Static
             if (!isOpen)
             {
                 Player player = (Player)anotherActor;
-                CheckKeys(player);
+                return CheckKeys(player);
             }
             return true;
         }
