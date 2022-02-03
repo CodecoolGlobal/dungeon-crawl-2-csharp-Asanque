@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -69,6 +71,26 @@ namespace Assets.Source.Core
             }
             Singleton.SetText(inventoryToPrint, TextPosition.BottomRight);
             Singleton.SetText($"HP: {Health} STR: {Strength} SHI: {Shield}", UserInterface.TextPosition.BottomLeft);
+        }
+
+        public void PrintNewGameText(int newGameCount)
+        {
+            string newGameText = CreateNewGameText(newGameCount);
+            Singleton.SetText(newGameText, UserInterface.TextPosition.TopLeft);
+        }
+
+        public string CreateNewGameText(int newGameCount)
+        {
+            string pluses;
+            if (newGameCount < 10)
+            {
+                pluses = String.Concat(Enumerable.Repeat("+", newGameCount));
+            }
+            else
+            {
+                pluses = "x " + newGameCount;
+            }
+            return "NewGame" + pluses;
         }
     }
 }
