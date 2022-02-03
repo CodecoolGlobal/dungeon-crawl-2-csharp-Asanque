@@ -26,6 +26,7 @@ namespace Assets.Source.Actors
         public static int houseDoor = 434;
         public static int flag = 400;
         public static int smallHouse = 912;
+        public static int pig = 364;
 
         public static void SetSprites(int mapId)
         {

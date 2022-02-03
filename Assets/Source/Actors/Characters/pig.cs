@@ -3,35 +3,16 @@ using UnityEngine;
 
 namespace DungeonCrawl.Actors.Characters
 {
-    public class Skeleton : Character
+    public class Pig : Skeleton
     {
-        protected int count = 0;
-        public Skeleton()
-        {
-            Health = 25 * Utilities.StatMultiplier;
-            Strength = 10 * Utilities.StatMultiplier;
-        }
-        protected float lastFrame = 0f;
-
-        public override bool OnCollision(Actor anotherActor)
-        {
-            if (anotherActor is Player || anotherActor is Skeleton || anotherActor is Demon)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        protected override void OnDeath()
-        {
-            Debug.Log("Bye!");
-        }
+        public override int DefaultSpriteId => 609;
+        public override string DefaultName => "Skeleton";
 
         protected override void OnUpdate(float deltaTime)
         {
             if (lastFrame > 1)
             {
-                if (count == 2)
+                if (count == 3)
                 {
                     count = 0;
                 }
@@ -50,18 +31,18 @@ namespace DungeonCrawl.Actors.Characters
             }
         }
 
-        public override int DefaultSpriteId => 609;
-        public override string DefaultName => "Skeleton";
-
         private void DemonMorph(int count)
         {
             switch (count)
             {
                 case 0:
-                    SetSprite(565);
+                    SetSprite(364);
                     break;
                 case 1:
-                    SetSprite(609);
+                    SetSprite(363);
+                    break;
+                case 2:
+                    SetSprite(362);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
