@@ -98,9 +98,9 @@ namespace DungeonCrawl.Actors.Characters
             }
         }
 
-        public bool HasKey()
+        public bool HasKey(string key)
         {
-            if (inventory.ContainsKey("key") && inventory["key"] > 0 )
+            if (inventory[key] > 0 )
             {
                 return true;
             }

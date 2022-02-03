@@ -26,6 +26,9 @@ namespace Assets.Source.Actors
             switch (mapId)
             {
                 case 1:
+                    wallId = DefId;
+                    floorId = DefId;
+                    doorId = DefId;
                     break;
                 case 2:
                     wallId = 144;
