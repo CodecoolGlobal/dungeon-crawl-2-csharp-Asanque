@@ -138,6 +138,10 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Skeleton>(position);
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
                     break;
+                case 'h':
+                    ActorManager.Singleton.Spawn<Pig>(position, Sprites.pig);
+                    ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
+                    break;
                 case 'd':
                     ActorManager.Singleton.Spawn<Door>(position, Sprites.doorId);
                     break;
