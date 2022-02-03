@@ -30,6 +30,12 @@ namespace DungeonCrawl.Actors.Characters
             }
         }
 
+        public Dictionary<string, int> GetStats()
+        {
+            Dictionary<string, int> characterStats = new Dictionary<string, int> {{ "Health", Health }, { "Strength", Strength }, { "Shield", Shield }};
+            return characterStats;
+    }
+
         protected abstract void OnDeath();
 
         /// <summary>
