@@ -13,6 +13,7 @@ namespace DungeonCrawl.Core
     /// </summary>
     public static class MapLoader
     {
+        private static int MapId = 1;
         private const int DefId = -5;
         public static GameManager GameManager
         {
@@ -42,10 +43,10 @@ namespace DungeonCrawl.Core
         ///     Constructs map from txt file and spawns actors at appropriate positions
         /// </summary>
         /// <param name="id"></param>
-        public static void LoadMap(int id)
+        public static void LoadMap()
         {
-            var lines = Regex.Split(Resources.Load<TextAsset>($"map_{id}").text, "\r\n|\r|\n");
-            Sprites.SetSprites(id);
+            var lines = Regex.Split(Resources.Load<TextAsset>($"map_{MapId}").text, "\r\n|\r|\n");
+            Sprites.SetSprites(MapId);
 
             // Read map size from the first line
             var split = lines[0].Split(' ');
@@ -67,6 +68,11 @@ namespace DungeonCrawl.Core
             // Set default camera size and position
             CameraController.Singleton.Size = 10;
             CameraController.Singleton.Position = (width / 2, -height / 2);
+            MapId++;
+            if (MapId is 3)
+            {
+                MapId = 1;
+            }
         }
 
         private static void SpawnActor(char c, (int x, int y) position)
@@ -145,7 +151,7 @@ namespace DungeonCrawl.Core
                     break;
                 case 'P':
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.lakeId);
-                    ActorManager.Singleton.Spawn<Door>(position, Sprites.boatId);
+                    ActorManager.Singleton.Spawn<DoorSpecial>(position, Sprites.boatId);
                     break;
                 case 'c':
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);

@@ -42,18 +42,19 @@ namespace DungeonCrawl.Actors.Characters
                     // Move right
                     TryMove(Direction.Right);
                 }
-                if (Input.GetKeyDown(KeyCode.LeftShift))
-                {
-                    ActorManager.Singleton.SavePlayerInventory();
-                    ActorManager.Singleton.DestroyAllActors();
-                    MapLoader.LoadMap(2);
-                    ActorManager.Singleton.LoadPlayerInventory();
-                }
                 lastFrame = 0;
             }
             else
             {
                 lastFrame += deltaTime;
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                ActorManager.Singleton.SavePlayerInventory();
+                ActorManager.Singleton.DestroyAllActors();
+                MapLoader.LoadMap();
+                ActorManager.Singleton.LoadPlayerInventory();
             }
 
             if (Input.GetKeyDown(KeyCode.Space))

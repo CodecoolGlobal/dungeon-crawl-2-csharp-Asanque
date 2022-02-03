@@ -20,8 +20,10 @@ namespace DungeonCrawl.Actors.Static
             isOpen = true;
             player.inventory["specialKey"] -= 1;
             SetSprite(487);
+            ActorManager.Singleton.SavePlayerInventory();
             ActorManager.Singleton.DestroyAllActors();
-            MapLoader.LoadMap(2);
+            MapLoader.LoadMap();
+            ActorManager.Singleton.LoadPlayerInventory();
         }
     }
 }
