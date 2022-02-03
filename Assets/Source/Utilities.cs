@@ -16,8 +16,6 @@ namespace DungeonCrawl
     public static class Utilities
     {
 
-        public static int StatMultiplier = countMultiplier();
-
         public static List<Type> EnemyTypes= new List<Type> { typeof(Brute), typeof(Skeleton), typeof(Demon)};
         
         public static List<int[]> Directions = new List<int[]> 
