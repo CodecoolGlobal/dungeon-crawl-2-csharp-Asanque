@@ -12,6 +12,8 @@ namespace DungeonCrawl.Core
     /// </summary>
     public class ActorManager : MonoBehaviour
     {
+        private Dictionary<string, int> playerStats;
+        private Dictionary<string, int> playerInventory ;
         private const int DefId = -5;
         /// <summary>
         ///     ActorManager singleton
@@ -21,6 +23,39 @@ namespace DungeonCrawl.Core
         {
             int randNumber = Random.Range(0, 100);
             return randNumber;
+        }
+
+        public void SavePlayerInventory()
+        {
+            Player playerActor = (Player)GetActorAt(GetPlayerPosition());
+            playerStats = playerActor.GetStats();
+            playerInventory = playerActor.inventory;
+        }
+
+        public void LoadPlayerInventory()
+        {
+            Player playerActor = (Player)GetActorAt(GetPlayerPosition());
+            playerActor.inventory = playerInventory;
+            ApplySavedStatsToPlayer(playerActor);
+        }
+
+        private void ApplySavedStatsToPlayer(Player player)
+        {
+            foreach (var stat in playerStats)
+            {
+                switch (stat.Key)
+                {
+                    case "Health":
+                        player.Health = stat.Value;
+                        break;
+                    case "Strength":
+                        player.Strength = stat.Value;
+                        break;
+                    case "Shield":
+                        player.Shield = stat.Value;
+                        break;
+                }
+            }
         }
 
         private SpriteAtlas _spriteAtlas;
@@ -50,7 +85,7 @@ namespace DungeonCrawl.Core
             return _allActors.FirstOrDefault(actor => actor.Detectable && actor.Position == position);
         }
 
-        public (int x, int y) GetActorPosition()
+        public (int x, int y) GetPlayerPosition()
         {
             (int x, int y) position = default;
             foreach (Actor actor in _allActors)

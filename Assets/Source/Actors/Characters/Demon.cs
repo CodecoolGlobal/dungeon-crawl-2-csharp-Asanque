@@ -46,7 +46,7 @@ namespace DungeonCrawl.Actors.Characters
 
         private void FollowPlayer()
         {
-            (int row, int col) playerPosition = ActorManager.Singleton.GetActorPosition();
+            (int row, int col) playerPosition = ActorManager.Singleton.GetPlayerPosition();
             int rowDifference = this.Position.x - playerPosition.row;
             int colDifference = this.Position.y - playerPosition.col;
             if (Math.Abs(rowDifference) > Math.Abs(colDifference))

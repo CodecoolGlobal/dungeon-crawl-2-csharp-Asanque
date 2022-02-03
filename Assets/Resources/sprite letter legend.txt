@@ -1,0 +1,22 @@
+k - key
+g - demon
+D -  door
+# - wall
+. - floor
+p - player
+s - skeleton / pig
+b - brute
+w - sword
+H - hidden wall
+E - hidden floor
+Z - special wall
+S - shield
+t - candle stick
+l - log
+L - lake
+I - tree trunk
+T - tree leaves
+P - boat
+c - campfire
++ - small health potion
+B - big health potion
