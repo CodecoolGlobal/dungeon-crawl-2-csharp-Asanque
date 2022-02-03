@@ -17,6 +17,10 @@ namespace DungeonCrawl.Actors.Items
         public override string DefaultName => "Candlestick";
         public override bool OnCollision(Actor anotherActor)
         {
+            if (anotherActor.GetType() == typeof(Demon))
+            {
+                return true;
+            }
             return false;
         }
     }

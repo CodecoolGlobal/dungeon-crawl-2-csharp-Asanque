@@ -22,6 +22,10 @@ namespace DungeonCrawl.Actors.Items
                 ActorManager.Singleton.DestroyActor(this);
                 return true;
             }
+            else if (anotherActor.GetType() == typeof(Demon))
+            {
+                return true;
+            }
             else { return false; }
         }
     }

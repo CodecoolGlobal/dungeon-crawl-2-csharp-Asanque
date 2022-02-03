@@ -21,6 +21,10 @@ namespace DungeonCrawl.Actors.Items
                 anotherActor.inventory["shield"] += 1;
                 anotherActor.AddToStat(Stats.Shield, 5);
             }
+            else if (anotherActor.GetType() == typeof(Demon))
+            {
+                return true;
+            }
             else
             {
                 return false;

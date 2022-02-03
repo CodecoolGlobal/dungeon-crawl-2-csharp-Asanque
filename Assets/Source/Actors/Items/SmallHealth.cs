@@ -22,6 +22,10 @@ namespace DungeonCrawl.Actors.Items
                 {
                     player.Health = 100;
                 }
+                else if (anotherActor.GetType() == typeof(Demon))
+                {
+                    return true;
+                }
                 else { player.AddToStat(Stats.Health, 10); }
                 ActorManager.Singleton.DestroyActor(this);
                 return true;

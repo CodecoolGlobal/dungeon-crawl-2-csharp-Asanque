@@ -20,6 +20,10 @@ namespace DungeonCrawl.Actors.Items
             {
                 anotherActor.inventory["key"] += 1;
             }
+            else if (anotherActor.GetType() == typeof(Demon))
+            {
+                return true;
+            }
             else
             {
                 return false;
