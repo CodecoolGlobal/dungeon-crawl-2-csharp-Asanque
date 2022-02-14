@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DungeonCrawl.Actors;
+using DungeonCrawl.Actors.Characters;
 using UnityEngine;
 using UnityEngine.U2D;
 
@@ -11,10 +12,51 @@ namespace DungeonCrawl.Core
     /// </summary>
     public class ActorManager : MonoBehaviour
     {
+        private Dictionary<string, int> playerStats;
+        private Dictionary<string, int> playerInventory ;
+        private const int DefId = -5;
         /// <summary>
         ///     ActorManager singleton
         /// </summary>
         public static ActorManager Singleton { get; private set; }
+        public static int RandomNumber()
+        {
+            int randNumber = Random.Range(0, 100);
+            return randNumber;
+        }
+
+        public void SavePlayerInventory()
+        {
+            Player playerActor = (Player)GetActorAt(GetPlayerPosition());
+            playerStats = playerActor.GetStats();
+            playerInventory = playerActor.inventory;
+        }
+
+        public void LoadPlayerInventory()
+        {
+            Player playerActor = (Player)GetActorAt(GetPlayerPosition());
+            playerActor.inventory = playerInventory;
+            ApplySavedStatsToPlayer(playerActor);
+        }
+
+        private void ApplySavedStatsToPlayer(Player player)
+        {
+            foreach (var stat in playerStats)
+            {
+                switch (stat.Key)
+                {
+                    case "Health":
+                        player.Health = stat.Value;
+                        break;
+                    case "Strength":
+                        player.Strength = stat.Value;
+                        break;
+                    case "Shield":
+                        player.Shield = stat.Value;
+                        break;
+                }
+            }
+        }
 
         private SpriteAtlas _spriteAtlas;
         private HashSet<Actor> _allActors;
@@ -41,6 +83,19 @@ namespace DungeonCrawl.Core
         public Actor GetActorAt((int x, int y) position)
         {
             return _allActors.FirstOrDefault(actor => actor.Detectable && actor.Position == position);
+        }
+
+        public (int x, int y) GetPlayerPosition()
+        {
+            (int x, int y) position = default;
+            foreach (Actor actor in _allActors)
+            {
+                if (actor is Player)
+                {
+                    return actor.Position;
+                }
+            }
+            return position;
         }
 
         /// <summary>
@@ -92,9 +147,9 @@ namespace DungeonCrawl.Core
         /// <param name="position">Position</param>
         /// <param name="actorName">Actor's name (optional)</param>
         /// <returns></returns>
-        public T Spawn<T>((int x, int y) position, string actorName = null) where T : Actor
+        public T Spawn<T>((int x, int y) position, int id = DefId, string actorName = null) where T : Actor
         {
-            return Spawn<T>(position.x, position.y, actorName);
+            return Spawn<T>(position.x, position.y, id, actorName);
         }
 
         /// <summary>
@@ -105,7 +160,7 @@ namespace DungeonCrawl.Core
         /// <param name="y">Y coordinate</param>
         /// <param name="actorName">Actor's name (optional)</param>
         /// <returns></returns>
-        public T Spawn<T>(int x, int y, string actorName = null) where T : Actor
+        public T Spawn<T>(int x, int y, int id, string actorName = null) where T : Actor
         {
             var go = new GameObject();
             go.AddComponent<SpriteRenderer>();
@@ -114,6 +169,7 @@ namespace DungeonCrawl.Core
 
             go.name = actorName ?? component.DefaultName;
             component.Position = (x, y);
+            component.SetSprite(id);
 
             _allActors.Add(component);
 

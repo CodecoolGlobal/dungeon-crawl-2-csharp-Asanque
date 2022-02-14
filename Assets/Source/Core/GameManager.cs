@@ -7,9 +7,18 @@ namespace DungeonCrawl.Core
     /// </summary>
     public class GameManager : MonoBehaviour
     {
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
+        }
         private void Start()
         {
-            MapLoader.LoadMap(1);
+            MapLoader.LoadMap();
+            Application.targetFrameRate = 60;
+
         }
     }
 }

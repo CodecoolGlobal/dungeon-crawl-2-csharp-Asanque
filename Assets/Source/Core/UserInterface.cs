@@ -1,4 +1,7 @@
-﻿using TMPro;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace Assets.Source.Core
@@ -35,7 +38,7 @@ namespace Assets.Source.Core
                 Destroy(this);
                 return;
             }
-            
+
             Singleton = this;
 
             _textComponents = GetComponentsInChildren<TextMeshProUGUI>();
@@ -48,7 +51,59 @@ namespace Assets.Source.Core
         /// <param name="textPosition"></param>
         public void SetText(string text, TextPosition textPosition)
         {
-            _textComponents[(int) textPosition].text = text;
+            _textComponents[(int)textPosition].text = text;
+        }
+
+        public void PrintInterface(Dictionary<string, int> inventory, int Health, int Strength, int Shield)
+        {
+            string inventoryToPrint = string.Empty;
+            string items = string.Empty;
+            foreach (var item in inventory)
+            {
+                if (item.Value > 0)
+                {
+                    items += $"{(char.ToUpper(item.Key[0])) + item.Key.Substring(1)} x{item.Value}\n";
+                }
+            }
+            if (items != string.Empty)
+            {
+                inventoryToPrint += "Inventory:\n" + items;
+            }
+            Singleton.SetText(inventoryToPrint, TextPosition.BottomRight);
+            Singleton.SetText($"HP: {Health} STR: {Strength} SHI: {Shield}", UserInterface.TextPosition.BottomLeft);
+        }
+
+        public void PrintNewGameText(int newGameCount)
+        {
+            string newGameText = CreateNewGameText(newGameCount);
+            Singleton.SetText(newGameText, UserInterface.TextPosition.TopLeft);
+        }
+
+        public string CreateNewGameText(int newGameCount)
+        {
+            string pluses;
+            if (newGameCount < 10)
+            {
+                pluses = String.Concat(Enumerable.Repeat("+", newGameCount));
+            }
+            else
+            {
+                pluses = " x" + newGameCount;
+            }
+            return "NewGame" + pluses;
+        }
+
+        public void PrintGameOverText()
+        {
+            Singleton.SetText("Game Over", UserInterface.TextPosition.MiddleCenter);
+        }
+
+        public void ClearUi()
+        {
+            foreach (var position in Enum.GetValues(typeof(TextPosition)))
+            {
+                Singleton.SetText(String.Empty, (TextPosition)position);
+            }
         }
     }
 }
