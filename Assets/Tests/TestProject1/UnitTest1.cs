@@ -3,6 +3,7 @@ using System;
 
 namespace DungeonCrawl.ProjectTest
 {
+    [TestFixture]
     public class Tests
     {
         [SetUp]
