@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cWYoN3v8oM9CotPLt08EBN5CiRcm91LA7XTBRTFWRnwUjZdvIChxyGWrIhWDZsyF+3k8+JnGGmOH8mdIyEwHAA==",
+  "dgSpecHash": "X5EnN/Da36RR9i0f8KJ6CWD96505lS0qeLFfu5G96R+EZpVdy32ox9COD/CBMaPRdTXaREJPW+IXYDke5SPkRw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Gargameth\\source\\repos\\dungeon-crawl-2-csharp-Asanque\\Assets\\Tests\\TestProject1\\TestProject1.csproj",
+  "projectFilePath": "C:\\Users\\Gargameth\\source\\repos\\dungeon-crawl-2-csharp-Asanque\\Assets\\Tests\\TestProject1\\DungeonCrawlTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Gargameth\\.nuget\\packages\\coverlet.collector\\3.1.0\\coverlet.collector.3.1.0.nupkg.sha512",
     "C:\\Users\\Gargameth\\.nuget\\packages\\microsoft.codecoverage\\16.11.0\\microsoft.codecoverage.16.11.0.nupkg.sha512",

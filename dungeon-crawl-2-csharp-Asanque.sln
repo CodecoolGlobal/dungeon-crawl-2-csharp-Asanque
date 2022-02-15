@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{D83AC49E-752D-B7B6-4A98-D516ECD31229}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "Assets\Tests\TestProject1\TestProject1.csproj", "{1BC3D7EE-0885-40D5-9385-A5FD5253B85B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DungeonCrawlTests", "Assets\Tests\TestProject1\DungeonCrawlTests.csproj", "{1BC3D7EE-0885-40D5-9385-A5FD5253B85B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
