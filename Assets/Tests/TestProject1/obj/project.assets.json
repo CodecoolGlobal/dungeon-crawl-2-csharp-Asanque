@@ -882,6 +882,15 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "Assembly-CSharp/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Assembly-CSharp.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Assembly-CSharp.dll": {}
+        }
       }
     }
   },
@@ -3844,10 +3853,16 @@
         "system.xml.xdocument.4.0.11.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "Assembly-CSharp/1.0.0": {
+      "type": "project",
+      "path": "../../../Assembly-CSharp.csproj",
+      "msbuildProject": "../../../Assembly-CSharp.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Assembly-CSharp >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 16.11.0",
       "NUnit >= 3.13.2",
       "NUnit3TestAdapter >= 4.0.0",
@@ -3860,9 +3875,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gargameth\\source\\repos\\dungeon-crawl-2-csharp-Asanque\\Assets\\Tests\\TestProject1\\TestProject1.csproj",
-      "projectName": "TestProject1",
-      "projectPath": "C:\\Users\\Gargameth\\source\\repos\\dungeon-crawl-2-csharp-Asanque\\Assets\\Tests\\TestProject1\\TestProject1.csproj",
+      "projectUniqueName": "C:\\Users\\Gargameth\\source\\repos\\dungeon-crawl-2-csharp-Asanque\\Assets\\Tests\\TestProject1\\DungeonCrawlTests.csproj",
+      "projectName": "DungeonCrawlTests",
+      "projectPath": "C:\\Users\\Gargameth\\source\\repos\\dungeon-crawl-2-csharp-Asanque\\Assets\\Tests\\TestProject1\\DungeonCrawlTests.csproj",
       "packagesPath": "C:\\Users\\Gargameth\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Gargameth\\source\\repos\\dungeon-crawl-2-csharp-Asanque\\Assets\\Tests\\TestProject1\\obj\\",
       "projectStyle": "PackageReference",
@@ -3880,7 +3895,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Gargameth\\source\\repos\\dungeon-crawl-2-csharp-Asanque\\Assembly-CSharp.csproj": {
+              "projectPath": "C:\\Users\\Gargameth\\source\\repos\\dungeon-crawl-2-csharp-Asanque\\Assembly-CSharp.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

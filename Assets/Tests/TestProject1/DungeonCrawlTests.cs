@@ -1,7 +1,7 @@
 using NUnit.Framework;
-using System;
+using DungeonCrawl.Actors.Characters;
 
-namespace DungeonCrawl.ProjectTest
+namespace DungeonCrawl
 {
     [TestFixture]
     public class Tests
@@ -12,9 +12,9 @@ namespace DungeonCrawl.ProjectTest
         }
 
         [Test]
-        public void Test1()
+        public void PlayerMovementTest()
         {
-            Assert.Pass();
+            
         }
     }
 }
