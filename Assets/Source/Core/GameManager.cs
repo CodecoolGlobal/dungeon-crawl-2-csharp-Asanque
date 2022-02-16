@@ -15,13 +15,6 @@ namespace DungeonCrawl.Core
             {
                 Application.Quit();
             }
-            if (Input.GetKeyDown(KeyCode.F5))
-            {
-                foreach (var actor in ActorManager.Singleton.AllActors)
-                {
-                    string output = JsonConvert.SerializeObject(actor);
-                }
-            }
         }
         private void Start()
         {

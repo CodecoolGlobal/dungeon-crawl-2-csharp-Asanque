@@ -14,7 +14,7 @@ namespace DungeonCrawl.Actors.Items
             if (anotherActor is Player)
             {
                 anotherActor.inventory["shield"] += 1;
-                int statToAdd = 5 * Utilities.countMultiplier();
+                int statToAdd = 5 * Utilities.CountMultiplier();
                 anotherActor.AddToStat(Stats.Shield, statToAdd);
             }
             else if (anotherActor is Demon)

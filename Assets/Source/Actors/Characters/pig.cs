@@ -7,7 +7,7 @@ namespace DungeonCrawl.Actors.Characters
     {
         public Pig()
         {
-            Strength = 1000 * Utilities.countMultiplier();
+            Strength = 1000 * Utilities.CountMultiplier();
         }
         public override int DefaultSpriteId => 609;
         public override string DefaultName => "Skeleton";

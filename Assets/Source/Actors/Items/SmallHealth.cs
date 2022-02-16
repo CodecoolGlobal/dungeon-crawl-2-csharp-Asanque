@@ -16,7 +16,7 @@ namespace DungeonCrawl.Actors.Items
                 {
                     player.Health = player.MaxHealth;
                 }
-                else { player.AddToStat(Stats.Health, 10 * (int)Utilities.expMultiplier()) ; }
+                else { player.AddToStat(Stats.Health, 10 * (int)Utilities.ExpMultiplier()) ; }
                 ActorManager.Singleton.DestroyActor(this);
                 return true;
             }

@@ -14,8 +14,7 @@ namespace DungeonCrawl.Core
     public class ActorManager : MonoBehaviour
     {
         private Dictionary<string, int> playerStats;
-        private Dictionary<string, int> playerInventory ;
-        public HashSet<Actor> AllActors { get { return _allActors; } }
+        private Dictionary<string, int> playerInventory;
         private const int DefId = -5;
         /// <summary>
         ///     ActorManager singleton
@@ -72,7 +71,6 @@ namespace DungeonCrawl.Core
         private SpriteAtlas _spriteAtlas;
         private HashSet<Actor> _allActors;
         public HashSet<Actor> AllActors { get { return _allActors; } }
-
         private void Awake()
         {
             if (Singleton != null)

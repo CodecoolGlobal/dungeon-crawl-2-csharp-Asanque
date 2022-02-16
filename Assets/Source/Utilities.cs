@@ -21,7 +21,7 @@ namespace DungeonCrawl
         public static List<int[]> Directions = new List<int[]> 
         { new int[] { 0, 1 }, new int[] {0, -1}, new int[] {-1, 0 }, new int[] {1, 0} };
 
-        public static int countMultiplier()
+        public static int CountMultiplier()
         {
             if (MapLoader.NewGameCount > 1)
             {
@@ -31,7 +31,7 @@ namespace DungeonCrawl
             return 1;
         }
 
-        public static double expMultiplier()
+        public static double ExpMultiplier()
         {
             if (MapLoader.NewGameCount > 1)
             {

@@ -7,9 +7,9 @@ namespace DungeonCrawl.Actors.Characters
         private float lastFrame = 0f;
         public Brute()
         {
-            Health = 50 * Utilities.countMultiplier();
-            Strength = 25 * Utilities.countMultiplier();
-            ExpCount = (int)(10 * Utilities.expMultiplier());
+            Health = 50 * Utilities.CountMultiplier();
+            Strength = 25 * Utilities.CountMultiplier();
+            ExpCount = (int)(10 * Utilities.ExpMultiplier());
         }
 
         protected override void OnUpdate(float deltaTime)

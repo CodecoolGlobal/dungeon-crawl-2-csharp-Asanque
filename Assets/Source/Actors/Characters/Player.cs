@@ -13,7 +13,7 @@ namespace DungeonCrawl.Actors.Characters
             Health = 100;
             Strength = 10;
             Shield = 5;
-            ExpCount = 60;
+            ExpCount = 0;
         }
         protected override void OnUpdate(float deltaTime)
         {
@@ -48,11 +48,6 @@ namespace DungeonCrawl.Actors.Characters
                     TryMove(Direction.Right);
                     FindObjectOfType<AudioManager>().Play("StepOne");
                 }
-
-                if (Input.GetKey(KeyCode.F5))
-                {
-                    SaveManager.WriteToJson();
-                }
                 lastFrame = 0;
             }
             else
@@ -73,6 +68,12 @@ namespace DungeonCrawl.Actors.Characters
                 TryAttack();
             }
 
+
+            if (Input.GetKey(KeyCode.F5))
+            {
+                SaveManager.WriteToJson();
+            }
+
             CheckExp();
             CameraController.Singleton.Position = Position;
         }
@@ -82,8 +83,8 @@ namespace DungeonCrawl.Actors.Characters
             if (ExpCount >= ExpNeeded)
             {
                 ExpCount -= ExpNeeded;
-                ExpNeeded = (int)(ExpNeeded * Utilities.expMultiplier());
-                MaxHealth = (int)(MaxHealth * Utilities.expMultiplier());
+                ExpNeeded = (int)(ExpNeeded * Utilities.ExpMultiplier());
+                MaxHealth = (int)(MaxHealth * Utilities.ExpMultiplier());
             }
         }
 
