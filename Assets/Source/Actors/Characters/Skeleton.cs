@@ -10,6 +10,7 @@ namespace DungeonCrawl.Actors.Characters
         {
             Health = 25 * Utilities.countMultiplier();
             Strength = 10 * Utilities.countMultiplier();
+            ExpCount = (int)(2 * Utilities.expMultiplier());
         }
         protected float lastFrame = 0f;
 
@@ -20,11 +21,6 @@ namespace DungeonCrawl.Actors.Characters
                 return false;
             }
             return true;
-        }
-
-        protected override void OnDeath()
-        {
-            Debug.Log("Bye!");
         }
 
         protected override void OnUpdate(float deltaTime)

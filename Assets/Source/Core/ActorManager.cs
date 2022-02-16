@@ -2,6 +2,7 @@
 using System.Linq;
 using DungeonCrawl.Actors;
 using DungeonCrawl.Actors.Characters;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.U2D;
 
@@ -14,6 +15,7 @@ namespace DungeonCrawl.Core
     {
         private Dictionary<string, int> playerStats;
         private Dictionary<string, int> playerInventory ;
+        public HashSet<Actor> AllActors { get { return _allActors; } }
         private const int DefId = -5;
         /// <summary>
         ///     ActorManager singleton
@@ -53,6 +55,15 @@ namespace DungeonCrawl.Core
                         break;
                     case "Shield":
                         player.Shield = stat.Value;
+                        break;
+                    case "ExpCount":
+                        player.ExpCount = stat.Value;
+                        break;
+                    case "ExpNeeded":
+                        player.ExpNeeded = stat.Value;
+                        break;
+                    case "MaxHealth":
+                        player.MaxHealth = stat.Value;
                         break;
                 }
             }

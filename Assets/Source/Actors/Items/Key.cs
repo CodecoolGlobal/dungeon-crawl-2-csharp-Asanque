@@ -6,6 +6,7 @@ namespace DungeonCrawl.Actors.Items
 {
     internal class Key : Actor
     {
+        public override int Z => -1;
         public override int DefaultSpriteId => 560;
         public override string DefaultName => "Key";
         public override bool OnCollision(Actor anotherActor)

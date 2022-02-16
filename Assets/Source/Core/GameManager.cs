@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using DungeonCrawl.Actors.Characters;
+using Newtonsoft.Json;
+using UnityEngine;
 
 namespace DungeonCrawl.Core
 {
@@ -13,12 +15,18 @@ namespace DungeonCrawl.Core
             {
                 Application.Quit();
             }
+            if (Input.GetKeyDown(KeyCode.F5))
+            {
+                foreach (var actor in ActorManager.Singleton.AllActors)
+                {
+                    string output = JsonConvert.SerializeObject(actor);
+                }
+            }
         }
         private void Start()
         {
             MapLoader.LoadMap();
             Application.targetFrameRate = 60;
-
         }
     }
 }

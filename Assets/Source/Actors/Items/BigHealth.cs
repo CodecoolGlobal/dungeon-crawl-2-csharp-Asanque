@@ -5,13 +5,14 @@ namespace DungeonCrawl.Actors.Items
 {
     internal class BigHealth : Actor
     {
+        public override int Z => -1;
         public override int DefaultSpriteId => 521;
         public override string DefaultName => "BigHealth";
         public override bool OnCollision(Actor anotherActor)
         {
             if (anotherActor is Player player)
             {
-                player.Health = 100;
+                player.Health = player.MaxHealth;
                 ActorManager.Singleton.DestroyActor(this);
                 return true;
             }

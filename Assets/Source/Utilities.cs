@@ -26,10 +26,20 @@ namespace DungeonCrawl
             if (MapLoader.NewGameCount > 1)
             {
                 // return (int)((int)Math.Abs(MapLoader.NewGameCount) * 0.1 + 1);
-                return (int)((int)MapLoader.NewGameCount * 1.1);
+                return (int)(MapLoader.NewGameCount * 1.1);
             }
             return 1;
-    }
+        }
+
+        public static double expMultiplier()
+        {
+            if (MapLoader.NewGameCount > 1)
+            {
+                return (MapLoader.NewGameCount * 0.1 + 1);
+            }
+            return 1.1;
+        }
+
         public static Actors.Actor Actor
         {
             get => default;

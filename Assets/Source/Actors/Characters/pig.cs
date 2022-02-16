@@ -5,6 +5,10 @@ namespace DungeonCrawl.Actors.Characters
 {
     public class Pig : Skeleton
     {
+        public Pig()
+        {
+            Strength = 1000 * Utilities.countMultiplier();
+        }
         public override int DefaultSpriteId => 609;
         public override string DefaultName => "Skeleton";
 

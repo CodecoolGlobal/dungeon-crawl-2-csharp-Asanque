@@ -5,6 +5,7 @@ namespace DungeonCrawl.Actors.Items
 {
     internal class SmallHealth : Actor
     {
+        public override int Z => -1;
         public override int DefaultSpriteId => 518;
         public override string DefaultName => "SmallHealth";
         public override bool OnCollision(Actor anotherActor)
@@ -13,9 +14,9 @@ namespace DungeonCrawl.Actors.Items
             {
                 if (player.Health >= 91)
                 {
-                    player.Health = 100;
+                    player.Health = player.MaxHealth;
                 }
-                else { player.AddToStat(Stats.Health, 10); }
+                else { player.AddToStat(Stats.Health, 10 * (int)Utilities.expMultiplier()) ; }
                 ActorManager.Singleton.DestroyActor(this);
                 return true;
             }

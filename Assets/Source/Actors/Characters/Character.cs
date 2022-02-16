@@ -1,5 +1,4 @@
-﻿using Assets.Source.Core;
-using DungeonCrawl.Core;
+﻿using DungeonCrawl.Core;
 using System.Collections.Generic;
 
 namespace DungeonCrawl.Actors.Characters
@@ -7,8 +6,11 @@ namespace DungeonCrawl.Actors.Characters
     public abstract class Character : Actor
     {
         public int Health { get; set; }
+        public int MaxHealth { get; set; } = 100;
         public int Shield { get; set; } = 0;
         public int Strength { get; set; }
+        public int ExpCount { get; set; }
+        public int ExpNeeded { get; set; } = 70;
         public override void ApplyDamage(int damage)
         {
             int incomingDamage = damage - Shield;
@@ -36,11 +38,18 @@ namespace DungeonCrawl.Actors.Characters
 
         public Dictionary<string, int> GetStats()
         {
-            Dictionary<string, int> characterStats = new Dictionary<string, int> {{ "Health", Health }, { "Strength", Strength }, { "Shield", Shield }};
+            Dictionary<string, int> characterStats = new Dictionary<string, int> 
+            {{ "Health", Health }, { "Strength", Strength }, { "Shield", Shield },
+            { "ExpCount", ExpCount}, { "ExpNeeded", ExpNeeded } , { "MaxHealth", MaxHealth }};
             return characterStats;
     }
 
-        protected abstract void OnDeath();
+        protected virtual void OnDeath()
+        {
+            (int x, int y) playerPosition = ActorManager.Singleton.GetPlayerPosition();
+            Player player = (Player)ActorManager.Singleton.GetActorAt(playerPosition);
+            player.ExpCount += ExpCount;
+        }
 
         /// <summary>
         ///     All characters are drawn "above" floor etc

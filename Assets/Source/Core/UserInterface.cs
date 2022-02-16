@@ -54,7 +54,7 @@ namespace Assets.Source.Core
             _textComponents[(int)textPosition].text = text;
         }
 
-        public void PrintInterface(Dictionary<string, int> inventory, int Health, int Strength, int Shield)
+        public void PrintInterface(Dictionary<string, int> inventory,int MaxHealth, int Health, int Strength, int Shield)
         {
             string inventoryToPrint = string.Empty;
             string items = string.Empty;
@@ -70,7 +70,7 @@ namespace Assets.Source.Core
                 inventoryToPrint += "Inventory:\n" + items;
             }
             Singleton.SetText(inventoryToPrint, TextPosition.BottomRight);
-            Singleton.SetText($"HP: {Health} STR: {Strength} SHI: {Shield}", UserInterface.TextPosition.BottomLeft);
+            Singleton.SetText($"HP: {Health}/{MaxHealth} STR: {Strength} SHI: {Shield}", UserInterface.TextPosition.BottomLeft);
         }
 
         public void PrintNewGameText(int newGameCount)
@@ -104,6 +104,11 @@ namespace Assets.Source.Core
             {
                 Singleton.SetText(String.Empty, (TextPosition)position);
             }
+        }
+
+        public void PrintExp(int exp, int expNeeded)
+        {
+            Singleton.SetText($"XP: {exp} / {expNeeded}", TextPosition.TopRight);
         }
     }
 }

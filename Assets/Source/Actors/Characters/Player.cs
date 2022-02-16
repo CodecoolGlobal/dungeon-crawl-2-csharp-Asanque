@@ -13,12 +13,14 @@ namespace DungeonCrawl.Actors.Characters
             Health = 100;
             Strength = 10;
             Shield = 5;
+            ExpCount = 60;
         }
         protected override void OnUpdate(float deltaTime)
         {
             if (lastFrame > 0.1)
             {
-                UserInterface.Singleton.PrintInterface(inventory, Health, Strength, Shield);
+                UserInterface.Singleton.PrintInterface(inventory, MaxHealth ,Health, Strength, Shield);
+                UserInterface.Singleton.PrintExp(ExpCount, ExpNeeded);
                 if (Input.GetKeyDown(KeyCode.W) || Input.GetKey(KeyCode.W))
                 {
                     // Move up
@@ -65,7 +67,19 @@ namespace DungeonCrawl.Actors.Characters
             {
                 TryAttack();
             }
+
+            CheckExp();
             CameraController.Singleton.Position = Position;
+        }
+
+        public void CheckExp()
+        {
+            if (ExpCount >= ExpNeeded)
+            {
+                ExpCount -= ExpNeeded;
+                ExpNeeded = (int)(ExpNeeded * Utilities.expMultiplier());
+                MaxHealth = (int)(MaxHealth * Utilities.expMultiplier());
+            }
         }
 
         public override bool IsPlayer()

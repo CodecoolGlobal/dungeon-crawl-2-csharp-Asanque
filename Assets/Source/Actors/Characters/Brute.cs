@@ -9,6 +9,7 @@ namespace DungeonCrawl.Actors.Characters
         {
             Health = 50 * Utilities.countMultiplier();
             Strength = 25 * Utilities.countMultiplier();
+            ExpCount = (int)(10 * Utilities.expMultiplier());
         }
 
         protected override void OnUpdate(float deltaTime)
@@ -32,11 +33,6 @@ namespace DungeonCrawl.Actors.Characters
                 return false;
             }
             return true;
-        }
-
-        protected override void OnDeath()
-        {
-            Debug.Log("Aaaaaaaaaaaa...");
         }
 
         public override int DefaultSpriteId => 317;

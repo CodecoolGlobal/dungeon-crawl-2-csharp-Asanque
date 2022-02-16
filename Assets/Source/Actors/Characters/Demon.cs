@@ -14,6 +14,7 @@ namespace DungeonCrawl.Actors.Characters
         {
             Health = 20 * Utilities.countMultiplier();
             Strength = 5 * Utilities.countMultiplier();
+            ExpCount = (int)(5 * Utilities.expMultiplier());
         }
         public override bool OnCollision(Actor anotherActor)
         {
@@ -22,11 +23,6 @@ namespace DungeonCrawl.Actors.Characters
                 return false;
             }
             return true;
-        }
-
-        protected override void OnDeath()
-        {
-            Debug.Log("sjasSNÉKnkébsnBÉC...");
         }
 
         protected override void OnUpdate(float deltaTime)
