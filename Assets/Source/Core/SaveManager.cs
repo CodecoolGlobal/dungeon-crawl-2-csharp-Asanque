@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using DungeonCrawl.Core;
 using DungeonCrawl.Actors.Characters;
 using System.IO;
+using DungeonCrawl;
+using DungeonCrawl.Actors;
+using DungeonCrawl.Actors.Items;
 using DungeonCrawl.Actors.Static;
 
 namespace Assets.Source.Core
@@ -11,40 +15,51 @@ namespace Assets.Source.Core
     {
         public static void WriteToJson()
         {
-            JsonSerializer serializer = new JsonSerializer();
-            Dictionary<string, List<Dictionary<string,string>>> savedActor = new Dictionary<string, List<Dictionary<string, string>>>();
-            savedActor["Characters"] = new List<Dictionary<string, string>>();
-            foreach (var actor in ActorManager.Singleton.AllActors)
+            try
             {
-                if (actor is Character || actor is Door)
+
+                JsonSerializer serializer = new JsonSerializer();
+                List<Dictionary<string, string>> savedActor = new List<Dictionary<string, string>>();
+                foreach (var actor in ActorManager.Singleton.AllActors)
                 {
-                    Dictionary<string, string> currentActor = new Dictionary<string, string>();
-                    if (actor is Player player)
+                    if (actor is Character || actor is Door || actor is Item)
                     {
-                        currentActor["inventory"] = JsonConvert.SerializeObject(player.inventory);
+                        Dictionary<string, string> currentActor = new Dictionary<string, string>();
+                        if (actor is Player player)
+                        {
+                            currentActor["inventory"] = JsonConvert.SerializeObject(player.inventory);
 
+                        }
+
+                        if (actor is Character character)
+                        {
+                            currentActor["health"] = character.Health.ToString();
+                            currentActor["strength"] = character.Strength.ToString();
+                        }
+                        else if (actor is Door door)
+                        {
+                            currentActor["isOpen"] = door.IsOpen.ToString();
+                        }
+
+                        currentActor["type"] = actor.GetType().ToString();
+                        currentActor["coordX"] = actor.Position.x.ToString();
+                        currentActor["coordY"] = actor.Position.y.ToString();
+                        savedActor.Add(currentActor);
                     }
-                    if (actor is Character character)
-                    {
-                        currentActor["health"] = character.Health.ToString();
-                        currentActor["strength"] = character.Strength.ToString();
-                    }
-                    else if (actor is Door door)
-                    {
-                        currentActor["isOpen"] = door.IsOpen.ToString();
-                    }
-                    currentActor["type"] = actor.GetType().ToString();
-                    currentActor["coordX"] = actor.Position.x.ToString();
-                    currentActor["coordY"] = actor.Position.y.ToString();
-                    savedActor["Characters"].Add(currentActor);
+
+
                 }
-                
 
+                using (StreamWriter sw = new StreamWriter(@"Json.json"))
+                using (JsonWriter writer = new JsonTextWriter(sw))
+                {
+                    serializer.Formatting = Formatting.Indented;
+                    serializer.Serialize(writer, savedActor);
+                }
             }
-            using (StreamWriter sw = new StreamWriter(@"C:\Users\kisge\Desktop\Codecool\OOP\Week 4\dungeon-crawl-2-csharp-Asanque\json.txt"))
-            using(JsonWriter writer = new JsonTextWriter(sw))
+            catch (Exception ex)
             {
-                serializer.Serialize(writer, savedActor);
+                UserInterface.Singleton.PrintException(ex);
             }
         }
     }
