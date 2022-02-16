@@ -5,6 +5,7 @@ namespace DungeonCrawl.Actors.Static
     public class Door : Actor
     {
         protected bool isOpen = false;
+        public bool IsOpen { get { return isOpen; } }
         public override bool OnCollision(Actor anotherActor)
         {
             if (anotherActor is Skeleton)

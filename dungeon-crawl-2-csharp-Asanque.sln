@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewAssembly", "NewAssembly.csproj", "{798C6B25-2952-F655-5BA6-ACE58353F856}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayModeTests", "PlayModeTests.csproj", "{28D6CECF-A915-2E08-A6A5-7FD0D9EAA17E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests.csproj", "{AC51BECA-1421-464B-B554-385FAF50B1AD}"
+
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,8 +27,12 @@ Global
 		{AC51BECA-1421-464B-B554-385FAF50B1AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC51BECA-1421-464B-B554-385FAF50B1AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC51BECA-1421-464B-B554-385FAF50B1AD}.Release|Any CPU.Build.0 = Release|Any CPU
+
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7BA316D-8E56-417D-A0D8-1D5597B43C12}
 	EndGlobalSection
 EndGlobal
