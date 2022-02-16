@@ -4,7 +4,7 @@ using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Actors.Items
 {
-    internal class Shield : Actor
+    public class Shield : Actor
     {
         public override int DefaultSpriteId => 230;
         public override string DefaultName => "Shield";
@@ -24,7 +24,12 @@ namespace DungeonCrawl.Actors.Items
             {
                 return false;
             }
-            ActorManager.Singleton.DestroyActor(this);
+            
+            if (this != null)
+            {
+                ActorManager.Singleton.DestroyActor(this);
+            }
+            
             return true;
         }
     }

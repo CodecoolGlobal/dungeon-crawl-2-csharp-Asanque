@@ -4,7 +4,7 @@ using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Actors.Items
 {
-    internal class Sword : Actor
+    public class Sword : Actor
     {
         public override int DefaultSpriteId => 464;
         public override string DefaultName => "Sword";
@@ -23,7 +23,12 @@ namespace DungeonCrawl.Actors.Items
             {
                 return false;
             }
-            ActorManager.Singleton.DestroyActor(this);
+            if (this != null)
+            {
+                ActorManager.Singleton.DestroyActor(this);
+            }
+            else { return true; }
+            
             return true;
         }
     }

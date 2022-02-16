@@ -4,7 +4,7 @@ using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Actors.Characters
 {
-    internal class Demon : Character
+    public class Demon : Character
     {
         private float lastFrame = 0f;
 

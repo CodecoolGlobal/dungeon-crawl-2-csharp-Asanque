@@ -3,7 +3,7 @@ using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Actors.Items
 {
-    internal class BigHealth : Actor
+    public class BigHealth : Actor
     {
         public override int DefaultSpriteId => 521;
         public override string DefaultName => "BigHealth";
@@ -12,7 +12,10 @@ namespace DungeonCrawl.Actors.Items
             if (anotherActor is Player player)
             {
                 player.Health = 100;
-                ActorManager.Singleton.DestroyActor(this);
+                if(this != null)
+                {
+                    ActorManager.Singleton.DestroyActor(this);
+                }
                 return true;
             }
             else if (anotherActor is Demon)

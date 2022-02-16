@@ -119,6 +119,7 @@ namespace DungeonCrawl.Core
             Destroy(actor.gameObject);
         }
 
+
         /// <summary>
         ///     Used for cleaning up the scene before loading a new map
         /// </summary>

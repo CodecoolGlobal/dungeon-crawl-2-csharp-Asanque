@@ -3,13 +3,28 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using DungeonCrawl.Actors.Characters;
+using DungeonCrawl;
+using DungeonCrawl.Core;
+using DungeonCrawl.Actors;
+using DungeonCrawl.Actors.Static;
+using Assets.Source.Actors;
 
 public class NewTestScript
 {
+    private Player player;
+    private Brute brute;
+    [SetUp]
     // A Test behaves as an ordinary method
+    public void Setup()
+    {
+    }
+
     [Test]
     public void NewTestScriptSimplePasses()
     {
+        player = new GameObject().AddComponent<Player>();
+        
         // Use the Assert class to test conditions
     }
 

@@ -4,7 +4,7 @@ using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Actors.Items
 {
-    internal class KeySpecial : Key
+    public class KeySpecial : Key
     {
         public override bool OnCollision(Actor anotherActor)
         {
@@ -16,7 +16,12 @@ namespace DungeonCrawl.Actors.Items
             {
                 return false;
             }
-            ActorManager.Singleton.DestroyActor(this);
+
+            if (this != null)
+            {
+                ActorManager.Singleton.DestroyActor(this);
+            }
+
             return true;
         }
         public override int DefaultSpriteId => 559;
