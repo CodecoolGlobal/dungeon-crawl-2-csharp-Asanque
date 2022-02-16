@@ -3,7 +3,7 @@ using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Actors.Items
 {
-    internal class SmallHealth : Actor
+    internal class SmallHealth : Item
     {
         public override int DefaultSpriteId => 518;
         public override string DefaultName => "SmallHealth";

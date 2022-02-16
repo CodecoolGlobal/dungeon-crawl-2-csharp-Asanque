@@ -1,12 +1,11 @@
 ﻿using DungeonCrawl.Actors.Characters;
-using DungeonCrawl.Core;
 
-namespace DungeonCrawl.Actors.Items
+namespace DungeonCrawl.Actors.Static.Decoration
 {
-    internal class Candlesticks : Actor
+    internal class Decoration : Actor
     {
-        public override int DefaultSpriteId => ActorManager.RandomNumber() % 2 == 0 ? 723 : 724;
-        public override string DefaultName => "Candlestick";
+        public override int DefaultSpriteId => 1;
+        public override string DefaultName => "Decor";
         public override bool OnCollision(Actor anotherActor)
         {
             if (anotherActor is Demon)
