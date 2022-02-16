@@ -105,5 +105,12 @@ namespace Assets.Source.Core
                 Singleton.SetText(String.Empty, (TextPosition)position);
             }
         }
+
+        public void PrintException(Exception ex)
+        {
+            var stringException = Convert.ToString(ex);
+            _textComponents[(int) TextPosition.MiddleLeft].text = stringException;
+            _textComponents[(int) TextPosition.MiddleLeft].fontSize = 10;
+        }
     }
 }
