@@ -1,6 +1,7 @@
 ﻿using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Actors.Items;
 using DungeonCrawl.Actors.Static;
+using DungeonCrawl.Actors.Static.Decoration;
 using System;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -16,7 +17,6 @@ namespace DungeonCrawl.Core
     {
         public static int NewGameCount = -1;
         private static int MapId = 1;
-        private const int DefId = -5;
         public static GameManager GameManager
         {
             get => default;

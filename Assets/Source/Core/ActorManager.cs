@@ -71,6 +71,7 @@ namespace DungeonCrawl.Core
 
         private SpriteAtlas _spriteAtlas;
         private HashSet<Actor> _allActors;
+        public HashSet<Actor> AllActors { get { return _allActors; } }
 
         private void Awake()
         {

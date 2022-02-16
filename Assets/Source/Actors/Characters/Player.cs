@@ -48,6 +48,11 @@ namespace DungeonCrawl.Actors.Characters
                     TryMove(Direction.Right);
                     FindObjectOfType<AudioManager>().Play("StepOne");
                 }
+
+                if (Input.GetKey(KeyCode.F5))
+                {
+                    SaveManager.WriteToJson();
+                }
                 lastFrame = 0;
             }
             else

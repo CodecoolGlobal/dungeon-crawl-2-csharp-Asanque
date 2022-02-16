@@ -1,7 +1,7 @@
 ﻿using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Core;
 
-namespace DungeonCrawl.Actors.Items
+namespace DungeonCrawl.Actors.Static.Decoration
 {
     internal class Candlesticks : Actor
     {

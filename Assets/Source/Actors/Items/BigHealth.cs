@@ -1,9 +1,10 @@
 ﻿using DungeonCrawl.Actors.Characters;
 using DungeonCrawl.Core;
+using Assets.Source.Actors;
 
 namespace DungeonCrawl.Actors.Items
 {
-    internal class BigHealth : Actor
+    internal class BigHealth : Item
     {
         public override int Z => -1;
         public override int DefaultSpriteId => 521;

@@ -1,6 +1,6 @@
 ﻿using DungeonCrawl.Actors.Characters;
 
-namespace DungeonCrawl.Actors.Items
+namespace DungeonCrawl.Actors.Static.Decoration
 {
     internal class Decoration : Actor
     {

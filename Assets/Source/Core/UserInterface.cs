@@ -110,5 +110,12 @@ namespace Assets.Source.Core
         {
             Singleton.SetText($"XP: {exp} / {expNeeded}", TextPosition.TopRight);
         }
+
+        public void PrintException(Exception ex)
+        {
+            var stringException = Convert.ToString(ex);
+            _textComponents[(int) TextPosition.MiddleLeft].text = stringException;
+            _textComponents[(int) TextPosition.MiddleLeft].fontSize = 10;
+        }
     }
 }
