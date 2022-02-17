@@ -194,7 +194,7 @@ namespace DungeonCrawl.Core
                     break;
                 case 'l':
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
-                    ActorManager.Singleton.Spawn<Floor>(position, Sprites.logId);
+                    ActorManager.Singleton.Spawn<PassableDecoration>(position, Sprites.logId);
                     break;
                 case 'L':
                     ActorManager.Singleton.Spawn<Wall>(position, Sprites.lakeId);
@@ -203,12 +203,12 @@ namespace DungeonCrawl.Core
                     ActorManager.Singleton.Spawn<Wall>(position, Sprites.river);
                     break;
                 case 'I':
-                    ActorManager.Singleton.Spawn<Wall>(position, Sprites.treeTrunkId);
+                    ActorManager.Singleton.Spawn<Decoration>(position, Sprites.treeTrunkId);
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
                     break;
                 case 'T':
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
-                    ActorManager.Singleton.Spawn<Wall>(position, Sprites.treeLeavesId);
+                    ActorManager.Singleton.Spawn<Decoration>(position, Sprites.treeLeavesId);
                     break;
                 case 'P':
                     ActorManager.Singleton.Spawn<DoorSpecial>(position, Sprites.boatId);

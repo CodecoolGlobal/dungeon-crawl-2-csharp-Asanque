@@ -29,6 +29,7 @@ namespace DungeonCrawl.Actors.Characters
             {
                 if (count == 2)
                 {
+                    TryAttack();
                     count = 0;
                 }
                 DemonMorph(count);

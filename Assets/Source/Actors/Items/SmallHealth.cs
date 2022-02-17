@@ -5,7 +5,6 @@ namespace DungeonCrawl.Actors.Items
 {
     internal class SmallHealth : Item
     {
-        public override int Z => -1;
         public override int DefaultSpriteId => 518;
         public override string DefaultName => "SmallHealth";
         public override bool OnCollision(Actor anotherActor)
