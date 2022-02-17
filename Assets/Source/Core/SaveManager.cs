@@ -71,8 +71,8 @@ namespace Assets.Source.Core
 
         public static List<Dictionary<string, string>> ReadJson()
         {
-            StringBuilder resultBuilder = new StringBuilder();
             StreamReader reader = new StreamReader(@"SaveFile.json");
+            StringBuilder resultBuilder = new StringBuilder();
 
             string strCurrentLine;
             while ((strCurrentLine = reader.ReadLine()) != null)
