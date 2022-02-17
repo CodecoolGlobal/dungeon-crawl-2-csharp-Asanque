@@ -7,7 +7,6 @@ public class BruteTest
     private Player player;
     private Demon demon;
     private Skeleton skeleton;
-    private Pig pig;
 
     [SetUp]
     public void init()
@@ -16,7 +15,6 @@ public class BruteTest
         player = new Player();
         demon = new Demon();
         skeleton = new Skeleton();
-        pig = new Pig();
     }
 
     [Test]
