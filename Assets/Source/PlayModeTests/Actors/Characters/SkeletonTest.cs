@@ -1,9 +1,8 @@
 using NUnit.Framework;
 using DungeonCrawl.Actors.Characters;
 
-public class BruteTest
+public class SkeletonTest
 {
-    private Brute brute;
     private Player player;
     private Demon demon;
     private Skeleton skeleton;
@@ -11,33 +10,32 @@ public class BruteTest
     [SetUp]
     public void init()
     {
-        brute = new Brute();
         player = new Player();
         demon = new Demon();
         skeleton = new Skeleton();
     }
 
     [Test]
-    public void DemonCanCollideWithBruteTest()
+    public void SkeletonCannotCollideWithPlayerTest()
     {
-        bool expected = true;
-        bool result = brute.OnCollision(demon);
+        bool expected = false;
+        bool result = skeleton.OnCollision(player);
         Assert.AreEqual(expected, result);
     }
 
     [Test]
-    public void PlayerCannotCollideWithBruteTest()
+    public void SkeletonCannotCollideWithDemonTest()
     {
         bool expected = false;
-        bool result = brute.OnCollision(player);
+        bool result = skeleton.OnCollision(demon);
         Assert.AreEqual(expected, result);
     }
 
     [Test]
-    public void SkeletonCannotCollideWithBruteTest()
+    public void SkeletonCannotCollideWithItselfTest()
     {
         bool expected = false;
-        bool result = brute.OnCollision(skeleton);
+        bool result = skeleton.OnCollision(skeleton);
         Assert.AreEqual(expected, result);
     }
 }
