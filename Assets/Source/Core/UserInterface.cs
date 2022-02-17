@@ -11,6 +11,8 @@ namespace Assets.Source.Core
     /// </summary>
     public class UserInterface : MonoBehaviour
     {
+        private float _lastFrame = 0;
+        private bool _keyPressed = false;
         public enum TextPosition : byte
         {
             TopLeft,
@@ -44,6 +46,32 @@ namespace Assets.Source.Core
             _textComponents = GetComponentsInChildren<TextMeshProUGUI>();
         }
 
+        private void Update()
+        {
+            if (_lastFrame > 3 && _keyPressed)
+            {
+                PrintNotification(string.Empty, false, TextPosition.BottomCenter);
+            }
+
+            if (Input.GetKeyDown(KeyCode.F5))
+            {
+                PrintNotification("Saved", true, TextPosition.BottomCenter);
+            }
+
+            if (Input.GetKeyDown(KeyCode.F9))
+            {
+                PrintNotification("Loaded", true, TextPosition.BottomCenter);
+            }
+            _lastFrame += Time.deltaTime;
+        }
+
+        public void PrintNotification(string notification, bool state, TextPosition textPosition)
+        {
+            _lastFrame = 0;
+            _keyPressed = state;
+            SetText(notification, textPosition);
+        }
+
         /// <summary>
         ///     Changes text at given screen position
         /// </summary>
@@ -52,6 +80,11 @@ namespace Assets.Source.Core
         public void SetText(string text, TextPosition textPosition)
         {
             _textComponents[(int)textPosition].text = text;
+        }
+
+        public void AddToText(string text, TextPosition textPosition)
+        {
+            _textComponents[(int)textPosition].text += $"{text}\n";
         }
 
         public void PrintInterface(Dictionary<string, int> inventory,int MaxHealth, int Health, int Strength, int Shield)

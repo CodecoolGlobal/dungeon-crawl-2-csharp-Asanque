@@ -1,4 +1,5 @@
-﻿using DungeonCrawl.Actors.Characters;
+﻿using Assets.Source.Core;
+using DungeonCrawl.Actors.Characters;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -14,6 +15,12 @@ namespace DungeonCrawl.Core
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Application.Quit();
+            }
+
+
+            if (Input.GetKey(KeyCode.F9))
+            {
+                SaveManager.Load();
             }
         }
         private void Start()

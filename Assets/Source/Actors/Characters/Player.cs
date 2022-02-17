@@ -68,15 +68,9 @@ namespace DungeonCrawl.Actors.Characters
                 TryAttack();
             }
 
-
-            if (Input.GetKey(KeyCode.F5))
+            if (Input.GetKeyDown(KeyCode.F5))
             {
                 SaveManager.Save();
-            }
-
-            if (Input.GetKey(KeyCode.F9))
-            {
-                SaveManager.Load();
             }
 
             CheckExp();
