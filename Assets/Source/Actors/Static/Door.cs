@@ -5,7 +5,7 @@ namespace DungeonCrawl.Actors.Static
     public class Door : Actor
     {
         protected bool isOpen = false;
-        public bool IsOpen { get { return isOpen; } }
+        public bool IsOpen { get { return isOpen; } set { isOpen = value; } }
         public override bool OnCollision(Actor anotherActor)
         {
             if (anotherActor is Skeleton)
@@ -35,7 +35,7 @@ namespace DungeonCrawl.Actors.Static
         public virtual void UseKey(Player player)
         {
             isOpen = true;
-            player.inventory["key"] -= 1;
+            player.Inventory["key"] -= 1;
             SetSprite(487);
         }
     }

@@ -11,7 +11,7 @@ namespace DungeonCrawl.Actors.Items
         {
             if (anotherActor is Player)
             {
-                anotherActor.inventory["specialKey"] += 1;
+                anotherActor.Inventory["specialKey"] += 1;
             }
             else
             {

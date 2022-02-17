@@ -30,13 +30,13 @@ namespace DungeonCrawl.Core
         {
             Player playerActor = (Player)GetActorAt(GetPlayerPosition());
             playerStats = playerActor.GetStats();
-            playerInventory = playerActor.inventory;
+            playerInventory = playerActor.Inventory;
         }
 
         public void LoadPlayerInventory()
         {
             Player playerActor = (Player)GetActorAt(GetPlayerPosition());
-            playerActor.inventory = playerInventory;
+            playerActor.Inventory = playerInventory;
             ApplySavedStatsToPlayer(playerActor);
         }
 

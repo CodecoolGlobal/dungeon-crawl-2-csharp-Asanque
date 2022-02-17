@@ -18,7 +18,7 @@ namespace DungeonCrawl.Actors.Static
         public override void UseKey(Player player)
         {
             isOpen = true;
-            player.inventory["specialKey"] -= 1;
+            player.Inventory["specialKey"] -= 1;
             SetSprite(487);
             ActorManager.Singleton.SavePlayerInventory();
             ActorManager.Singleton.DestroyAllActors();

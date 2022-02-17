@@ -16,7 +16,7 @@ namespace DungeonCrawl.Core
     public static class MapLoader
     {
         public static int NewGameCount = -1;
-        private static int MapId = 1;
+        public static int MapId = 1;
         public static GameManager GameManager
         {
             get => default;
@@ -45,14 +45,23 @@ namespace DungeonCrawl.Core
         ///     Constructs map from txt file and spawns actors at appropriate positions
         /// </summary>
         /// <param name="id"></param>
-        public static void LoadMap()
+        public static void LoadMap(bool load=false)
         {
-            if (MapId == 1)
+            if (MapId == 1 && load is false)
             {
                 NewGameCount++;
             }
 
-            var lines = Regex.Split(Resources.Load<TextAsset>($"map_{MapId}").text, "\r\n|\r|\n");
+            string[] lines;
+            if (load)
+            {
+                lines = Regex.Split(Resources.Load<TextAsset>($"map_{MapId}_raw").text, "\r\n|\r|\n");
+            }
+            else
+            {
+                lines = Regex.Split(Resources.Load<TextAsset>($"map_{MapId}").text, "\r\n|\r|\n");
+            }
+
             Sprites.SetSprites(MapId);
 
             // Read map size from the first line
@@ -220,6 +229,9 @@ namespace DungeonCrawl.Core
                 case 'g':
                     ActorManager.Singleton.Spawn<Floor>(position, Sprites.floorId);
                     ActorManager.Singleton.Spawn<Demon>(position);
+                    break;
+                case 'x':
+                    ActorManager.Singleton.Spawn<Floor>(position, Sprites.lakeId);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

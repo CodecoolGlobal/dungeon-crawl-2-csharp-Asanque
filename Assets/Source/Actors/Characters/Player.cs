@@ -19,7 +19,7 @@ namespace DungeonCrawl.Actors.Characters
         {
             if (lastFrame > 0.1)
             {
-                UserInterface.Singleton.PrintInterface(inventory, MaxHealth ,Health, Strength, Shield);
+                UserInterface.Singleton.PrintInterface(Inventory, MaxHealth ,Health, Strength, Shield);
                 UserInterface.Singleton.PrintExp(ExpCount, ExpNeeded);
                 if (Input.GetKeyDown(KeyCode.W) || Input.GetKey(KeyCode.W))
                 {
@@ -71,7 +71,12 @@ namespace DungeonCrawl.Actors.Characters
 
             if (Input.GetKey(KeyCode.F5))
             {
-                SaveManager.WriteToJson();
+                SaveManager.Save();
+            }
+
+            if (Input.GetKey(KeyCode.F9))
+            {
+                SaveManager.Load();
             }
 
             CheckExp();
@@ -126,7 +131,7 @@ namespace DungeonCrawl.Actors.Characters
 
         public bool HasKey(string key)
         {
-            if (inventory[key] > 0 )
+            if (Inventory[key] > 0 )
             {
                 return true;
             }

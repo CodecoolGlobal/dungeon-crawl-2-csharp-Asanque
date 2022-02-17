@@ -13,7 +13,7 @@ namespace DungeonCrawl.Actors.Items
         {
             if (anotherActor is Player)
             {
-                anotherActor.inventory["key"] += 1;
+                anotherActor.Inventory["key"] += 1;
             }
             else if (anotherActor is Demon)
             {
