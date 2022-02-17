@@ -175,6 +175,7 @@ namespace Assets.Source.Core
 
         public static void Load()
         {
+            UserInterface.Singleton.ClearUi();
             ActorManager.Singleton.DestroyAllActors();
             var readSave = ReadJson();
             LoadGameSettings(readSave[0]);
