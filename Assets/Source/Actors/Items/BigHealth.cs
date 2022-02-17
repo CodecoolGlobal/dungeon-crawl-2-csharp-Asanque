@@ -12,7 +12,7 @@ namespace DungeonCrawl.Actors.Items
             if (anotherActor is Player player)
             {
                 player.Health = 100;
-                if(this != null)
+                if (this != null)
                 {
                     ActorManager.Singleton.DestroyActor(this);
                 }

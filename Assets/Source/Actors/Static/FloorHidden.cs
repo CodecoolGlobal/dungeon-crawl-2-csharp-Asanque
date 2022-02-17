@@ -10,9 +10,13 @@ namespace DungeonCrawl.Actors.Static
         {
             if (anotherActor is Player)
             {
-                UserInterface.Singleton.SetText("Creators: Peti, Nati, Marci, Asanque", UserInterface.TextPosition.MiddleCenter);
+                if (this != null)
+                {
+                    UserInterface.Singleton.SetText("Creators: Peti, Nati, Marci, Asanque", UserInterface.TextPosition.MiddleCenter);
+                }
+                return true;
             }
-            return true;
+            return false;
         }
         public override int DefaultSpriteId => -1;
         public override string DefaultName => "Floor";

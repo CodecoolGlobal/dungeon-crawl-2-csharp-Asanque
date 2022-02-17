@@ -3,7 +3,7 @@ using DungeonCrawl.Core;
 
 namespace DungeonCrawl.Actors.Items
 {
-    internal class Candlesticks : Actor
+    public class Candlesticks : Actor
     {
         public override int DefaultSpriteId => ActorManager.RandomNumber() % 2 == 0 ? 723 : 724;
         public override string DefaultName => "Candlestick";

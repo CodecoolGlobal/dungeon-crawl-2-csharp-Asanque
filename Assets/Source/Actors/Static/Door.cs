@@ -14,8 +14,15 @@ namespace DungeonCrawl.Actors.Static
             }
             if (!isOpen)
             {
-                Player player = (Player)anotherActor;
-                return CheckKeys(player);
+                if (anotherActor is Demon)
+                {
+                    return true;
+                }
+                else
+                {
+                    Player player = (Player)anotherActor;
+                    return CheckKeys(player);
+                }
             }
             return true;
         }
@@ -36,7 +43,7 @@ namespace DungeonCrawl.Actors.Static
         {
             isOpen = true;
             player.inventory["key"] -= 1;
-            SetSprite(487);
+            if (this != null) { SetSprite(487); }
         }
     }
 }

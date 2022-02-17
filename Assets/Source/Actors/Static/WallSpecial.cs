@@ -11,7 +11,7 @@ namespace DungeonCrawl.Actors.Static
             {
                 return false;
             }
-            UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.MiddleCenter);
+            if (this != null) { UserInterface.Singleton.SetText(string.Empty, UserInterface.TextPosition.MiddleCenter); }
             return true;
         }
     }
