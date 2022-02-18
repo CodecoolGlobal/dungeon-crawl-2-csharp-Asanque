@@ -6,7 +6,7 @@ namespace DungeonCrawl.Actors.Items
 {
     internal class KeySpecial : Key
     {
-        public override bool OnCollision(Actor anotherActor)
+        public override bool CheckCollision(Actor anotherActor)
         {
             if (anotherActor is Player)
             {

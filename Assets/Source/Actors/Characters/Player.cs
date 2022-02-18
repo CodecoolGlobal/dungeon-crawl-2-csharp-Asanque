@@ -77,6 +77,11 @@ namespace DungeonCrawl.Actors.Characters
             CameraController.Singleton.Position = Position;
         }
 
+        public void PrintAddedItem(string name)
+        {
+            UserInterface.Singleton.AddToText(name, UserInterface.TextPosition.MiddleRight);
+        }
+
         public void CheckExp()
         {
             if (ExpCount >= ExpNeeded)

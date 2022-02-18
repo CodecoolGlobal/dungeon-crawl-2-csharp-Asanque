@@ -7,7 +7,7 @@ namespace DungeonCrawl.Actors.Items
     {
         public override int DefaultSpriteId => 518;
         public override string DefaultName => "SmallHealth";
-        public override bool OnCollision(Actor anotherActor)
+        public override bool CheckCollision(Actor anotherActor)
         {
             if (anotherActor is Player player)
             {
