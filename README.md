@@ -3,6 +3,7 @@
 # Dungeon Crawl unity game
     
 ## Dungeon Crawler
+</div>
 
 ## Table of Contents
 - [Description](#Description)
