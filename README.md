@@ -24,6 +24,6 @@ This game uses C# and Unity.
 [To play the game simply follow the instructions here!](https://github.com/CodecoolGlobal/dungeon-crawl-2-csharp-Asanque/releases/tag/Release)
 
 ## Controls
-W,A,S,D to move.
-Space to attack.
-Move over items to pick them up.
+W,A,S,D to move. <br>
+Space to attack. <br>
+Move over items to pick them up. <br>
