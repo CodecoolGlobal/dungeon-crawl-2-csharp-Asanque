@@ -11,7 +11,7 @@
 - [Technologies](#Technologies)
 - [Install](#Install)
 - [Controls](#Controls)
-- [Game Rules](#Game Rules)
+- [GameRules](#GameRules)
     
 ## Description
 Dungeon Crawler is a small roguelike, dungeon crawler game with a variety of enemies, items and maps.
@@ -30,7 +30,7 @@ Space to attack. <br>
 Move over items to pick them up. <br>
 ESC to exit the game
 
-## Game Rules
+## GameRules
 On bottom left you can see your stats, HP is your health points, STR is how much damage you deal to enemies, SHI is shield, shield will negate damage you receive if the incoming damage is smaller than your shield stat.<br>
 There are three maps in total, each map is completed by going through the final door<br>
 After you've completed level three the game starts over again from level one but from now on every time you complete all three levels the game gets progressively harder.<br>
